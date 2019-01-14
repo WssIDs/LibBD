@@ -1,0 +1,22 @@
+﻿@model IEnumerable<LibBD.Models.MenuItem>
+<div class="nav navbar-nav">
+    <ul class="nav navbar-nav">
+        @foreach (var item in Model)
+        {
+            if (item.Controller == "Admin")
+            {
+                if (User.Identity.IsAuthenticated)
+                {
+                    if (User.IsInRole("admin"))
+                    {
+                        <li class="@item.Active">@Html.ActionLink(item.Name, item.Action, item.Controller)</li>
+                    }
+                }
+            }
+            else
+            {
+                <li class="@item.Active">@Html.ActionLink(item.Name, item.Action, item.Controller)</li>
+            }
+        }
+    </ul>
+</div>

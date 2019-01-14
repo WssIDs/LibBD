@@ -1,0 +1,92 @@
+﻿@model IEnumerable<LibDB.DAL.Author>
+
+@{
+    ViewBag.Title = "Администрирование баз";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<p>
+    @Html.Action("Organization", "Admin")
+</p>
+
+<h2>База авторы</h2>
+<p>
+    @Html.ActionLink("Добавить", "Create", null, new { @class = "btn btn-sm btn-success" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CardTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CardYear)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Collaborators)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Year)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pages)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(model => item.CardTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(model => item.CardYear)
+        </td>
+        <td>
+            @Html.DisplayFor(model => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(model => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(model => item.Collaborators)
+        </td>
+        <td>
+            @Html.DisplayFor(model => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(model => item.Year)
+        </td>
+        <td>
+            @Html.DisplayFor(model => item.Number)
+        </td>
+        <td>
+            @Html.DisplayFor(model => item.Pages)
+        </td>
+        <td>
+            @Html.DisplayFor(model => item.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "Edit", new { id = item.AuthorId }, new { @class = "btn btn-xs btn-default" })
+            @Html.ActionLink("Просмотр", "Details", new { id = item.AuthorId }, new { @class = "btn btn-xs btn-info" })
+            @Html.ActionLink("Удалить", "Delete", new { id = item.AuthorId }, new { @class = "btn btn-xs btn-danger" })
+        </td>
+    </tr>
+    }
+
+</table>

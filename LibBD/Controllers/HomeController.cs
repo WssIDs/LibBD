@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibDB.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,23 +9,18 @@ namespace LibBD.Controllers
 {
     public class HomeController : Controller
     {
+        IRepository<Organization> repository;
+
+        public HomeController(IRepository<Organization> repo)
+        {
+            repository = repo;
+        }
+
         public ActionResult Index()
         {
-            return View();
-        }
+            var model = repository.GetAll().First();
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            return View(model);
         }
     }
 }

@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/bundles/styles")
+    @RenderSection("Styles", false)
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -17,28 +17,50 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.Action("Brand","Menu")
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+                @Html.Action("Main", "Menu", new { c = Request.RequestContext.RouteData.Values["controller"], })
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+    </nav>
+        <!--Содержимое сайта-->
+    <div class="main-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-3">
+                    <h2>@ViewBag.Caption</h2>
+                </div>
+            </div>
+            <div class="row">
+                <!--Левая боковая панель-->
+                @*<div class="col-md-3">
+                    @Html.Action("Side", "Menu")
+                    @RenderSection("SidePanel", required: false)
+                </div>*@
+                <!--/Левая боковая панель (конец)-->
+                <!--Основная панель-->
+                <div class="col-md-12">
+                    @RenderBody()
+                </div><!--/Основная панель (конец)-->
+            </div>
+        </div>
+    </div><!--Содержимое сайта (конец)-->
+
+    <!--Подвал страницы-->
+    <footer class="section" id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.Action("Footer", "Menu")
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--Подвал страницы (конец)-->
 
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    @RenderSection("Scripts", required: false)
 </body>
 </html>
