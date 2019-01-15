@@ -31,6 +31,7 @@ namespace LibBD.Controllers
         {
             var author = new Author();
             author.CardYear = DateTime.Now.Year;
+            author.Year = DateTime.Now.Year;
             return View(author);
         }
 

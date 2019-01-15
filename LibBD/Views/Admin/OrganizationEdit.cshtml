@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Изменение данных организации";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
         <h2>Изменение данных организации</h2>
 
@@ -11,7 +11,7 @@
         {
             @Html.AntiForgeryToken()
 
-            <div class="form-horizontal col-md-8">
+            <div class="form-horizontal">
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 @Html.HiddenFor(model => model.OrganizationId)

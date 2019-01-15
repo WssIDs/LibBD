@@ -31,7 +31,7 @@ namespace LibDB.DAL
                 {
                     Email = "admin@wssids.by",
                     UserName = "admin@wssids.by",
-                    NickName = "WssIDs"
+                    //NickName = "WssIDs"
                 };
 
                 userManager.CreateAsync(userAdmin, "123456").Wait();
