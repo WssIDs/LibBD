@@ -23,9 +23,12 @@ namespace LibDB.DAL
         public string Director { get; set; } // ФИО директора
         [Required(ErrorMessage = "Введите номер телефона")]
         [Display(Name = "Номер телефона")]
+        [DataType(DataType.PhoneNumber)]
         public string Phone { get; set; } // номер телефон
         [Required(ErrorMessage = "Введите адрес электронной почты")]
         [Display(Name = "Электронная почта")]
+        [DataType(DataType.EmailAddress)]
+        [EmailAddress(ErrorMessage = "Неверный адрес электронной почты")]
         public string Email { get; set; } // email
     }
 }
