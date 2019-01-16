@@ -1,13 +1,31 @@
 ﻿@model LibDB.DAL.Author
-<div class='car-item col-md-12'>
-    <div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title">@Model.CardTitle</h3>
+<div class="margin-bottom-30">
+    <!-- BEGIN Portlet PORTLET-->
+    <div class="portlet">
+        <div class="portlet-title">
+            <div class="caption caption-green">
+                <i class="glyphicon glyphicon-book"></i>
+                <span class="caption-subject text-uppercase">@Model.CardTitle</span>
+            </div>
+            <div class="actions">
+                <label class="btn grey-salsa active">
+                    @Model.CardYear
+                </label>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <h4>Автор: @Model.LastName @Model.FirstName</h4>
+            <p><strong>Соавторы:</strong> @Model.Collaborators</p>
+            <p><strong>Название:</strong> @Model.Title</p>
+            <p><strong>Номер:</strong> @Model.Year</p>
+            <p><strong>Страницы:</strong> @Model.Pages стр.</p>
+            <p>@Model.Description</p>
+        </div>
+        <div class="portlet-body">
+            <hr />
+            <p>@Model.Description</p>
+        </div>
     </div>
-    <div class="panel-body">
-        <p><strong>год:</strong> @Model.CardYear</p>
-        <p><strong>Автор:</strong> @Model.LastName @Model.FirstName</p>
-    </div>
-    </div>
+   <!-- END Portlet PORTLET-->
 </div>
 

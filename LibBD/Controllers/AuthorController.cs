@@ -11,7 +11,7 @@ namespace LibBD.Controllers
     public class AuthorController : Controller
     {
         IRepository<Author> repository;
-        int pageSize = 3;
+        int pageSize = 10;
 
         public AuthorController(IRepository<Author> repo)
         {
@@ -19,12 +19,7 @@ namespace LibBD.Controllers
         }
 
         // GET: Author
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        public ActionResult List(string group, int page = 1)
+        public ActionResult Index(string group, int page = 1)
         {
             var lst = repository.GetAll().Where(d => group == null
                              || d.CardYear.Equals(group))

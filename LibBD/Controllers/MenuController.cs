@@ -18,9 +18,11 @@ namespace LibBD.Controllers
         {
             items = new List<MenuItem>
             {
-                new MenuItem{Name="Домой", Controller="Home", Action="Index", Active=string.Empty},
-                new MenuItem{Name="Авторы", Controller="Author", Action="List", Active=string.Empty},
-                new MenuItem{Name = "Администрирование",Controller = "Admin",  Action = "Index", Active = string.Empty}
+                new MenuItem{Name="Главная", Controller="Home", Action="Index", Active=string.Empty},
+                new MenuItem{Name="Наследие", Controller="Author", Action="Index", Active=string.Empty},
+                new MenuItem{Name="Культура", Controller="Author", Action="Index", Active=string.Empty},
+                new MenuItem{Name="История", Controller="Author", Action="Index", Active=string.Empty},
+                new MenuItem{Name="Контакты", Controller="Contact", Action="Index", Active=string.Empty},
             };
 
             repository = repo;

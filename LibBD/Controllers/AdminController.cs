@@ -11,12 +11,10 @@ namespace LibBD.Controllers
     public class AdminController : Controller
     {
         IRepository<Author> repository;
-        IRepository<Organization> repositoryOrg;
 
-        public AdminController(IRepository<Author> repo, IRepository<Organization> repo1)
+        public AdminController(IRepository<Author> repo)
         {
             repository = repo;
-            repositoryOrg = repo1;
         }
 
 
@@ -121,36 +119,6 @@ namespace LibBD.Controllers
             {
                 return View();
             }
-        }
-
-        public PartialViewResult Organization()
-        {
-            return PartialView(repositoryOrg.GetAll().First());
-        }
-
-
-        public ActionResult OrganizationEdit(int id)
-        {
-            return View(repositoryOrg.Get(id));
-        }
-
-        // POST: Admin/OrganizationEdit/5
-        [HttpPost]
-        public ActionResult OrganizationEdit(Organization organization)
-        {
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    repositoryOrg.Update(organization);
-                    return RedirectToAction("Index");
-                }
-                catch
-                {
-                    return View();
-                }
-            }
-            else return View(organization);
         }
     }
 }

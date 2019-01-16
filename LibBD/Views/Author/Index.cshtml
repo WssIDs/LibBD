@@ -1,0 +1,9 @@
+﻿@model LibBD.Models.PageListViewModel<LibDB.DAL.Author>
+@using System.Text;
+@{
+    ViewBag.Title = "Наследие";
+}
+<h2>Наследие</h2>
+<div id="Index">
+    @Html.Partial("ListPartial", Model)
+</div>

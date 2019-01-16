@@ -17,7 +17,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.Action("Brand","Menu")
+                @Html.Action("Brand", "Menu")
             </div>
             <div class="navbar-collapse collapse">
                 @Html.Action("Main", "Menu", new { c = Request.RequestContext.RouteData.Values["controller"], })
@@ -25,7 +25,7 @@
             </div>
         </div>
     </nav>
-        <!--Содержимое сайта-->
+    <!--Содержимое сайта-->
     <div class="main-body">
         <div class="container">
             <div class="row">
@@ -36,9 +36,9 @@
             <div class="row">
                 <!--Левая боковая панель-->
                 @*<div class="col-md-3">
-                    @Html.Action("Side", "Menu")
-                    @RenderSection("SidePanel", required: false)
-                </div>*@
+                        @Html.Action("Side", "Menu")
+                        @RenderSection("SidePanel", required: false)
+                    </div>*@
                 <!--/Левая боковая панель (конец)-->
                 <!--Основная панель-->
                 <div class="col-md-12">
@@ -47,13 +47,17 @@
             </div>
         </div>
     </div><!--Содержимое сайта (конец)-->
-
     <!--Подвал страницы-->
     <footer class="section" id="footer">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    @Html.Action("Footer", "Menu")
+                    <div class="row">
+                        @Html.Action("Footer", "Menu")
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <p>Copyright © @DateTime.Now.Year <a href="http://kletsklib.by">kletsklib.by</a></p>
                 </div>
             </div>
         </div>

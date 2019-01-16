@@ -1,0 +1,24 @@
+﻿@model LibDB.DAL.Organization
+@{
+    ViewBag.Title = "Контакты";
+}
+
+<h2>Организация</h2>
+    @if (User.Identity.IsAuthenticated)
+    {
+        if (User.IsInRole("admin"))
+        {
+            <p>
+             @Html.ActionLink("Редактировать", "Edit", new { id = Model.OrganizationId }, new { @class = "btn btn-sm btn-primary" })
+            </p>
+        }
+    }
+    <div class="row">
+        <div class="col-md-12">
+            <p>@Html.DisplayFor(model => Model.FullOrganizationName)</p>
+            <p>@Html.DisplayFor(model => Model.ShortOrganizationName)</p>
+            <p>@Html.DisplayFor(model => Model.Director)</p>
+            <p>@Html.DisplayFor(model => Model.Phone)</p>
+            <p>@Html.DisplayFor(model => Model.Email)</p>
+        </div>
+    </div>
