@@ -2,23 +2,15 @@
 
 @{
     ViewBag.Title = "Администрирование баз";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>База авторы</h2>
-<p>
-    @Html.ActionLink("Добавить", "Create", null, new { @class = "btn btn-sm btn-success" })
-</p>
+<div class="panel panel-default filterable">
+    <div class="panel-heading">
+        <h3 class="panel-title">Наследие</h3>
+    </div>
 
-<div class="filterable">
-    @*<div class="panel-heading">
-        <h3 class="panel-title">Users</h3>
-        <div class="pull-right">
-            <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filter</button>
-        </div>
-    </div>*@
-
-    <table class="table">
+    <table class="table table-bordred table-striped">
         <thead>
             <tr class="filters">
                 <th><input type="number" class="form-control" placeholder="Номер"></th>
@@ -27,11 +19,11 @@
                 <th><input type="text" class="form-control" placeholder="ФИО"></th>
                 <th><input type="text" class="form-control" placeholder="Название"></th>
                 <th><input type="number" class="form-control" placeholder="Год выпуска"></th>
-                <th></th>
+                <th width="100">@Html.ActionLink("Добавить", "Create", null, new { @class = "btn btn-success"})</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
+            @*<tr>
                 <th>
                     №
                 </th>
@@ -51,7 +43,7 @@
                     @Html.DisplayNameFor(model => model.Year)
                 </th>
                 <th>Действия над записями</th>
-            </tr>
+            </tr>*@
 
             @foreach (var item in Model)
             {
