@@ -6,14 +6,19 @@
     @Html.AntiForgeryToken()
 
 <ul class="nav navbar-nav navbar-right">
-    <li>
+    @*<li>
         @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-    </li>
+    </li>*@
     <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">User.Identity.GetUserName() <span class="caret"></span></a>
         <ul class="dropdown-menu">
+            @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
             <li>@Html.ActionLink("Администирование", "Index", "Admin")</li>
+            <li>@Html.ActionLink("Наследие", "Heritage", "Admin")</li>
+            <li>@Html.ActionLink("Культура", "Heritage", "Admin")</li>
+            <li>@Html.ActionLink("История", "Heritage", "Admin")</li>
             <li role="separator" class="divider"></li>
+            <li>@Html.ActionLink("Профиль", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
             <li><a href="javascript:document.getElementById('logoutForm').submit()">Выход</a></li>
         </ul>
     </li>
