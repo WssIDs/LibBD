@@ -29,6 +29,8 @@ namespace LibBD
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                                          "~/Scripts/jquery-{version}.js",
+                                         "~/Scripts/jquery-{version}.slim.js",
+                                         "~/Scripts/popper.js",
                                          "~/Scripts/bootstrap.js",
                                          "~/Scripts/modernizr-*",
                                          "~/Scripts/respond.js",
@@ -36,7 +38,7 @@ namespace LibBD
                                          ));
 
             bundles.Add(new StyleBundle("~/bundles/styles").Include(
-                                 "~/Content/bootstrap.css",
+                                 "~/Content/bootstrap.min.css",
                                  "~/Content/font-awesome.css",
                                  "~/Content/site.css"));
         }

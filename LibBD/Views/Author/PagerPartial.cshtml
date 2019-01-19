@@ -6,15 +6,23 @@
     // стрелка влево
     var liPrevNext = new TagBuilder("li");
 
+
     liPrevNext.InnerHtml = Ajax.ActionLink("Первая", "Index",
         new { group = groupName, page = 1 },
-        new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "Index" }
+        new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "Index" },
+        new { @class = "page-link"}
     ).ToString();
 
     if (Model.CurrentPage <= 1)
     {
         liPrevNext.AddCssClass("disabled");
-        liPrevNext.InnerHtml = "<span>Первая</span>";
+        liPrevNext.AddCssClass("page-item");
+        //liPrevNext.InnerHtml = "<span>Первая</span>";
+        liPrevNext.InnerHtml = Ajax.ActionLink("Первая", "Index",
+            new { group = groupName, page = 1 },
+            new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "Index" },
+            new { @class = "page-link" }
+        ).ToString();
     }
 
     result.Append(liPrevNext.ToString());
@@ -23,13 +31,19 @@
     {
         liPrevNext.InnerHtml = Ajax.ActionLink("«", "Index",
             new { group = groupName, page = Model.CurrentPage - 1 },
-            new AjaxOptions { UpdateTargetId = "Index", InsertionMode = InsertionMode.Replace }
+            new AjaxOptions { UpdateTargetId = "Index", InsertionMode = InsertionMode.Replace },
+            new { @class = "page-link" }
             ).ToString();
     }
     if (Model.CurrentPage <= 1)
     {
         liPrevNext.AddCssClass("disabled");
-        liPrevNext.InnerHtml = "<span>«</span>";
+        liPrevNext.AddCssClass("page-item");
+        liPrevNext.InnerHtml = Ajax.ActionLink("«", "Index",
+        new { group = groupName, page = Model.CurrentPage - 1 },
+        new AjaxOptions { UpdateTargetId = "Index", InsertionMode = InsertionMode.Replace },
+        new { @class = "page-link" }
+        ).ToString();
     }
 
     result.Append(liPrevNext.ToString());
@@ -41,6 +55,7 @@
         if (i == Model.CurrentPage)
         {
             li.AddCssClass("active");
+            li.AddCssClass("page-item");
         }
         //var a = new TagBuilder("a");
         //a.MergeAttribute("href", Url.Action("List", new
@@ -54,7 +69,8 @@
         li.InnerHtml = Ajax.RouteLink(
             i.ToString(),
             new { action = "Index", group = groupName, page = i },
-            new AjaxOptions { UpdateTargetId = "Index", InsertionMode = InsertionMode.Replace }
+            new AjaxOptions { UpdateTargetId = "Index", InsertionMode = InsertionMode.Replace },
+            new { @class = "page-link" }
             ).ToString();
 
 
@@ -65,23 +81,32 @@
     liPrevNext = new TagBuilder("li");
     liPrevNext.InnerHtml = Ajax.ActionLink("»", "Index",
         new { group = groupName, page = Model.CurrentPage + 1 },
-        new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "Index" }
+        new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "Index" },
+        new { @class = "page-link" }
     ).ToString();
     if (Model.CurrentPage == Model.TotalPages)
     {
         liPrevNext.AddCssClass("disabled");
-        liPrevNext.InnerHtml = "<span>»</span>";
+        liPrevNext.AddCssClass("page-item");
+        liPrevNext.InnerHtml = Ajax.ActionLink("»", "Index",
+        new { group = groupName, page = Model.CurrentPage + 1 },
+        new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "Index" },
+        new { @class = "page-link" }
+        ).ToString();
     }
 
     result.Append(liPrevNext.ToString());
 
     liPrevNext.InnerHtml = Ajax.ActionLink("Последняя", "Index",
         new { group = groupName, page = Model.TotalPages },
-        new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "Index" }
+        new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "Index" },
+        new { @class = "page-link" }
         ).ToString();
 
     result.Append(liPrevNext.ToString());
 }
-<ul class="pagination">
-    @MvcHtmlString.Create(result.ToString())
-</ul>
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        @MvcHtmlString.Create(result.ToString())
+    </ul>
+</nav>

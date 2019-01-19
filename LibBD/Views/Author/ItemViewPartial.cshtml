@@ -1,7 +1,7 @@
 ﻿@model LibDB.DAL.Author
-<div class="margin-bottom-30">
+@*<div class="col-md-12">*@
     <!-- BEGIN Portlet PORTLET-->
-    <div class="portlet">
+    @*<div class="portlet">
         <div class="portlet-title">
             <div class="caption caption-green">
                 <span class="caption-subject text-uppercase">@Model.AuthorId. @Model.CardTitle</span>
@@ -27,7 +27,28 @@
             <p>@Model.CardTitle [Текст] / @Model.Collaborators // @Model.Title. - @Model.Year. - @Model.Number. - C. @Model.Pages.</p>
             <p>@Model.Description</p>
         </div>
+    </div>*@
+<div class="card mb-5">
+    <div class="card-header text-uppercase text-primary">
+        @Model.AuthorId . @Model.CardTitle <span class="badge badge-primary badge-pill pull-right">@Model.CardYear</span>
     </div>
-   <!-- END Portlet PORTLET-->
+    <div class="card-body">
+        <h6 class="card-title">@Model.LastName @Model.FirstName</h6>
+    </div>
+    <ul class="list-group list-group-flush list-inline">
+        <li class="list-group-item">@Model.Collaborators</li>
+        <li class="list-group-item">@Model.Title</li>
+        <li class="list-group-item">@Model.Year</li>
+        <li class="list-group-item">@Model.Number</li>
+        <li class="list-group-item">@Model.Pages стр.</li>
+        <li class="list-group-item">@Model.Description</li>
+    </ul>
+    <div class="card-footer text-muted">
+        <p><strong>@Model.LastName, @Model.FirstName.First().</strong></p>
+        <p>@Model.CardTitle [Текст] / @Model.Collaborators // @Model.Title. - @Model.Year. - @Model.Number. - C. @Model.Pages.</p>
+        <p>@Model.Description</p>
+    </div>
 </div>
+    <!-- END Portlet PORTLET-->
+    @*</div>*@
 
