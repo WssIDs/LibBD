@@ -75,7 +75,7 @@ namespace LibBD.Controllers
                 try
                 {
                     repositoryHeritage.Update(author);
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Heritage");
                 }
                 catch
                 {
@@ -99,7 +99,7 @@ namespace LibBD.Controllers
             {
                 // TODO: Add delete logic here
                 repositoryHeritage.Delete(id);
-                return RedirectToAction("Index");
+                return RedirectToAction("Heritage");
             }
             catch
             {
@@ -121,7 +121,7 @@ namespace LibBD.Controllers
             {
                 // TODO: Add delete logic here
                 repositoryHeritage.Get(id);
-                return RedirectToAction("Index");
+                return RedirectToAction("Heritage");
             }
             catch
             {

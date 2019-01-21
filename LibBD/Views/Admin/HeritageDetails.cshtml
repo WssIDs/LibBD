@@ -1,0 +1,78 @@
+﻿@model LibDB.DAL.Author
+
+@{
+    ViewBag.Title = "HeritageDetails";
+}
+
+<h2 class="mt-5">Просмотр</h2>
+
+<div>
+    <h4>Наследие</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-md-3">
+            @Html.DisplayNameFor(model => model.CardTitle)
+        </dt>
+        <dd class="col-md-9">
+            @Html.DisplayFor(model => model.CardTitle)
+        </dd>
+        <dt class="col-md-3">
+            @Html.DisplayNameFor(model => model.CardYear)
+        </dt>
+        <dd class="col-md-9">
+            @Html.DisplayFor(model => model.CardYear)
+        </dd>
+        <dt class="col-md-3">
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd class="col-md-9">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt class="col-md-3">
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd class="col-md-9">
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt class="col-md-3">
+            @Html.DisplayNameFor(model => model.Collaborators)
+        </dt>
+        <dd class="col-md-9">
+            @Html.DisplayFor(model => model.Collaborators)
+        </dd>
+        <dt class="col-md-3">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class="col-md-9">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-md-3">
+            @Html.DisplayNameFor(model => model.Year)
+        </dt>
+        <dd class="col-md-9">
+            @Html.DisplayFor(model => model.Year)
+        </dd>
+        <dt class="col-md-3">
+            @Html.DisplayNameFor(model => model.Number)
+        </dt>
+        <dd class="col-md-9">
+            @Html.DisplayFor(model => model.Number)
+        </dd>
+        <dt class="col-md-3">
+            @Html.DisplayNameFor(model => model.Pages)
+        </dt>
+        <dd class="col-md-9">
+            @Html.DisplayFor(model => model.Pages)
+        </dd>
+        <dt class="col-md-3">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-md-9">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Редактировать", "Edit", new { id = Model.AuthorId }, new { @class = "btn btn-success"})
+    @Html.ActionLink("Отмена", "Heritage", null, new { @class = "btn btn-dark" })
+</p>

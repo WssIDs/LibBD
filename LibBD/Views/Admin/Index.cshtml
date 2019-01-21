@@ -8,29 +8,32 @@
 <h2>Базы данных библиотеки</h2>
 
 <div class="row">
-    <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-            <img src="~/Images/legacy.jpg" alt="Наследие">
-            <div class="caption">
-                <h3>Наследие</h3>
+    <div class="col-sm-12 col-md-4">
+        <div class="card">
+            <img class="card-img-top" src="~/Images/legacy.jpg" alt="Наследие">
+            <div class="card-body">
+                <h3 class="card-title">Наследие</h3>
+                <p class="card-text">Карточки наследния библиотеки</p>
+                <p>@Html.ActionLink("Редактировать", "Heritage", "Admin", null, new { @class = "btn btn-primary" })</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-4">
+        <div class="card">
+            <img class="card-img-top" src="~/Images/culture.jpg" alt="Наследие">
+            <div class="card-body">
+                <h3 class="card-title">Культура</h3>
+                <p class="card-text">Карточки культуры библиотеки</p>
                 <p>@Html.ActionLink("Редактировать", "Heritage", "Admin", null, new { @class = "btn btn-primary" })</p>
             </div>
         </div>
     </div>
     <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-            <img src="~/Images/culture.jpg" alt="Культура">
-            <div class="caption">
-                <h3>Культура</h3>
-                <p>@Html.ActionLink("Редактировать", "Heritage", "Admin", null, new { @class = "btn btn-primary" })</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-            <img src="~/Images/history.jpg" alt="История">
-            <div class="caption">
-                <h3>История</h3>
+        <div class="card">
+            <img class="card-img-top" src="~/Images/history.jpg" alt="Наследие">
+            <div class="card-body">
+                <h3 class="card-title">История</h3>
+                <p class="card-text">Карточки истории библиотеки</p>
                 <p>@Html.ActionLink("Редактировать", "Heritage", "Admin", null, new { @class = "btn btn-primary" })</p>
             </div>
         </div>

@@ -11,7 +11,7 @@ namespace LibBD.Controllers
     public class AuthorController : Controller
     {
         IRepository<Author> repository;
-        int pageSize = 10;
+        int pageSize = 3;
 
         public AuthorController(IRepository<Author> repo)
         {
