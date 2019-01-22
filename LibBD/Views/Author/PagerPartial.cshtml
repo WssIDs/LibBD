@@ -31,7 +31,7 @@
     {
         liPrevNext.InnerHtml = Ajax.ActionLink("«", "Index",
             new { group = groupName, page = Model.CurrentPage - 1 },
-            new AjaxOptions { UpdateTargetId = "Index", InsertionMode = InsertionMode.Replace },
+            new AjaxOptions { UpdateTargetId = "Index", InsertionMode = InsertionMode.Replace},
             new { @class = "page-link" }
             ).ToString();
     }

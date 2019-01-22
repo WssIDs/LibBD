@@ -38,6 +38,16 @@ namespace LibBD.Controllers
             var author = new Author();
             author.CardYear = DateTime.Now.Year;
             author.Year = DateTime.Now.Year;
+
+            author.CardTitle = RandomString(7);
+            author.Collaborators = RandomString(15);
+            author.Description = RandomString(30);
+            author.FirstName = RandomString(8);
+            author.LastName = RandomString(10);
+            author.Title = RandomString(9);
+            author.Number = random.Next(1, 300);
+            author.Pages = RandomString(5);
+
             return View(author);
         }
 
@@ -58,6 +68,14 @@ namespace LibBD.Controllers
                 }
             }
             else return View(author);
+        }
+
+        private static Random random = new Random();
+        public static string RandomString(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
         // GET: Admin/Edit/5
