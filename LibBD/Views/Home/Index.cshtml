@@ -5,14 +5,11 @@
 }
 
 <h2 class="mt-5">Базы данных библиотеки</h2>
-
+<hr />
 <div class="row">
     <div class="col-sm-12 col-md-4">
         <div class="card">
-            @if (Model.MimeTypeHeritage == null)
-            {<img src="~/Images/placeholder.png" class="card-img-top">}
-            else
-            {<img src="@Url.Action("GetImage", "Contact", new { id = Model.OrganizationId, type = 1 })" class="card-img-top">}
+            <img src="~/Images/placeholder.png" class="card-img-top">
             <div class="card-body">
                 <h3 class="card-title">Наследие</h3>
                 <p class="card-text">Карточки наследния библиотеки</p>
@@ -22,10 +19,7 @@
     </div>
     <div class="col-sm-12 col-md-4">
         <div class="card">
-            @if (Model.MimeTypeHeritage == null)
-            {<img src="~/Images/placeholder.png" class="card-img-top">}
-            else
-            {<img src="@Url.Action("GetImage", "Contact", new { id = Model.OrganizationId, type = 2 })" class="card-img-top">}
+            <img src="~/Images/placeholder.png" class="card-img-top">
             <div class="card-body">
                 <h3 class="card-title">Культура</h3>
                 <p class="card-text">Карточки культуры библиотеки</p>
@@ -35,10 +29,7 @@
     </div>
     <div class="col-sm-6 col-md-4">
         <div class="card">
-            @if (Model.MimeTypeHeritage == null)
-            {<img src="~/Images/placeholder.png" class="card-img-top">}
-            else
-            {<img src="@Url.Action("GetImage", "Contact", new { id = Model.OrganizationId, type = 3 })" class="card-img-top">}
+            <img src="~/Images/placeholder.png" class="card-img-top">
             <div class="card-body">
                 <h3 class="card-title">История</h3>
                 <p class="card-text">Карточки истории библиотеки</p>

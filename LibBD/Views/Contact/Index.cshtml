@@ -4,6 +4,7 @@
 }
 
 <h2 class="mt-5">Организация</h2>
+<hr />
     <div class="row">
         <div class="col-md-12">
             <dl class="row">
@@ -41,28 +42,19 @@
                     Наследие
                 </dt>
                 <dd class="col-md-8">
-                    @if (Model.ImageHeritage == null)
-                    {<img width="250" src="~/Images/placeholder.png" class="img-thumbnail">}
-                    else
-                    { <img width="250" src="@Url.Action("GetImage", "Contact", new { id = Model.OrganizationId,  type = 1 })" class="img-thumbnail">}
+                    <img src="~/Images/placeholder.png" class="img-thumbnail">
                 </dd>
                 <dt class="col-md-4">
                     Культура
                 </dt>
                 <dd class="col-md-8">
-                    @if (Model.ImageCulture == null)
-                    {<img width="250" src="~/Images/placeholder.png" class="img-thumbnail">}
-                    else
-                    { <img width="250" src="@Url.Action("GetImage", "Contact", new { id = Model.OrganizationId,  type = 2 })" class="img-thumbnail">}
+                    <img src="~/Images/placeholder.png" class="img-thumbnail">
                 </dd>
                 <dt class="col-md-4">
                     История
                 </dt>
                 <dd class="col-md-8">
-                    @if (Model.ImageHistory == null)
-                    {<img width="250" src="~/Images/placeholder.png" class="img-thumbnail">}
-                    else
-                    { <img width="250" src="@Url.Action("GetImage", "Contact", new { id = Model.OrganizationId,  type = 3 })" class="img-thumbnail">}
+                    <img src="~/Images/placeholder.png" class="img-thumbnail">
                 </dd>
             </dl>
             @if (User.Identity.IsAuthenticated)

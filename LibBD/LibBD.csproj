@@ -204,6 +204,10 @@
     <Compile Include="Migrations\201901230845364_Add-Heritage-Culture-History-MimeTypeFields.Designer.cs">
       <DependentUpon>201901230845364_Add-Heritage-Culture-History-MimeTypeFields.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901232007140_Remove-ImageTypeAndData.cs" />
+    <Compile Include="Migrations\201901232007140_Remove-ImageTypeAndData.Designer.cs">
+      <DependentUpon>201901232007140_Remove-ImageTypeAndData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -464,6 +468,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901230845364_Add-Heritage-Culture-History-MimeTypeFields.resx">
       <DependentUpon>201901230845364_Add-Heritage-Culture-History-MimeTypeFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901232007140_Remove-ImageTypeAndData.resx">
+      <DependentUpon>201901232007140_Remove-ImageTypeAndData.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

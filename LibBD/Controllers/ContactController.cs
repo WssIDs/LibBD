@@ -33,31 +33,10 @@ namespace LibBD.Controllers
         [Authorize(Roles = "admin")]
         // POST: Admin/Edit/5
         [HttpPost]
-        public ActionResult Edit(Organization organization, HttpPostedFileBase imageUploadHeritage = null, HttpPostedFileBase imageUploadCulture = null, HttpPostedFileBase imageUploadHistory = null)
+        public ActionResult Edit(Organization organization)
         {
             if (ModelState.IsValid)
             {
-                if (imageUploadHeritage != null)
-                {
-                    var count = imageUploadHeritage.ContentLength;
-                    organization.ImageHeritage = new byte[count];
-                    imageUploadHeritage.InputStream.Read(organization.ImageHeritage, 0, (int)count);
-                    organization.MimeTypeHeritage = imageUploadHeritage.ContentType;
-                }
-                if (imageUploadCulture != null)
-                {
-                    var count = imageUploadCulture.ContentLength;
-                    organization.ImageCulture = new byte[count];
-                    imageUploadCulture.InputStream.Read(organization.ImageCulture, 0, (int)count);
-                    organization.MimeTypeCulture = imageUploadCulture.ContentType;
-                }
-                if (imageUploadHistory != null)
-                {
-                    var count = imageUploadHistory.ContentLength;
-                    organization.ImageHistory = new byte[count];
-                    imageUploadHistory.InputStream.Read(organization.ImageHistory, 0, (int)count);
-                    organization.MimeTypeHistory = imageUploadHistory.ContentType;
-                }
                 try
                 {
                     repository.Update(organization);
@@ -69,31 +48,6 @@ namespace LibBD.Controllers
                 }
             }
             else return View(organization);
-        }
-
-        public async Task<FileResult> GetImage(int id, int type)
-        {
-            var org = await repository.GetAsync(id);
-            if (org != null)
-            {
-                if (type == 1)
-                {
-                    return new FileContentResult(org.ImageHeritage, org.MimeTypeHeritage);
-                }
-                else if (type == 2)
-                {
-                    return new FileContentResult(org.ImageCulture, org.MimeTypeCulture);
-                }
-                else if (type == 3)
-                {
-                    return new FileContentResult(org.ImageHistory, org.MimeTypeHistory);
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            else return null;
         }
     }
 }

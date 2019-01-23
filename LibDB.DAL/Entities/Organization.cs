@@ -30,14 +30,5 @@ namespace LibDB.DAL
         [DataType(DataType.EmailAddress)]
         [EmailAddress(ErrorMessage = "Неверный адрес электронной почты")]
         public string Email { get; set; } // email
-
-        public string MimeTypeHeritage { get; set; }
-        public byte[] ImageHeritage { get; set; }
-
-        public string MimeTypeCulture { get; set; }
-        public byte[] ImageCulture { get; set; }
-
-        public string MimeTypeHistory { get; set; }
-        public byte[] ImageHistory { get; set; }
     }
 }
