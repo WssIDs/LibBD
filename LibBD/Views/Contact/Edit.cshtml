@@ -7,62 +7,93 @@
 <h2>Изменение данных организации</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Contact", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.OrganizationId)
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.OrganizationId)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.FullOrganizationName, htmlAttributes: new { @class = "control-label col-md-4" })
-            <div class="col-md-8">
-                @Html.EditorFor(model => model.FullOrganizationName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FullOrganizationName, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.FullOrganizationName, htmlAttributes: new { @class = "control-label" })
+        @Html.EditorFor(model => model.FullOrganizationName, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.FullOrganizationName, "", new { @class = "text-danger" })
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ShortOrganizationName, htmlAttributes: new { @class = "control-label col-md-4" })
-            <div class="col-md-8">
-                @Html.EditorFor(model => model.ShortOrganizationName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ShortOrganizationName, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.ShortOrganizationName, htmlAttributes: new { @class = "control-label" })
+        @Html.EditorFor(model => model.ShortOrganizationName, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.ShortOrganizationName, "", new { @class = "text-danger" })
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Director, htmlAttributes: new { @class = "control-label col-md-4" })
-            <div class="col-md-8">
-                @Html.EditorFor(model => model.Director, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Director, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Director, htmlAttributes: new { @class = "control-label" })
+        @Html.EditorFor(model => model.Director, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Director, "", new { @class = "text-danger" })
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-4" })
-            <div class="col-md-8">
-                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label" })
+        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-4" })
-            <div class="col-md-8">
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label" })
+        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+    </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-4 col-md-8">
-                <input type="submit" value="Сохранить" class="btn btn-success" />
-                @Html.ActionLink("Назад", "Index", null, new { @class = "btn btn-default" })
-            </div>
+    <div class="form-group">
+        @Html.Label("Изображение наследие", htmlAttributes: new { @class = "control-label" })
+        <div class="custom-file">
+            @Html
+            <input type="file" class="custom-file-input" name="imageUploadHeritage" id="customFile">
+            <label class="custom-file-label" for="customFile">Выберите изображение</label>
         </div>
     </div>
+    <div class="form-group">
+        @if (Model.MimeTypeHeritage == null)
+        {<img width="250" src="~/Images/placeholder.png" class="img-thumbnail">}
+        else
+        { <img width="250" src="@Url.Action("GetImage", "Contact", new { id = Model.OrganizationId, type = 1 })" class="img-thumbnail">}
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Изображение культура", htmlAttributes: new { @class = "control-label" })
+        <div class="custom-file">
+            <input type="file" class="custom-file-input" name="imageUploadCulture" id="customFile">
+            <label class="custom-file-label" for="customFile">Выберите изображение</label>
+        </div>
+    </div>
+    <div class="form-group">
+        @if (Model.MimeTypeCulture == null)
+        {<img width="250" src="~/Images/placeholder.png" class="img-thumbnail">}
+        else
+        { <img width="250" src="@Url.Action("GetImage", "Contact", new { id = Model.OrganizationId, type = 2 })" class="img-thumbnail">}
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Изображение история", htmlAttributes: new { @class = "control-label" })
+        <div class="custom-file">
+            <input type="file" class="custom-file-input" name="imageUploadHistory" id="customFile">
+            <label class="custom-file-label" for="customFile">Выберите изображение</label>
+        </div>
+    </div>
+    <div class="form-group">
+        @if (Model.MimeTypeHistory == null)
+        {<img width="250" src="~/Images/placeholder.png" class="img-thumbnail">}
+        else
+        { <img width="250" src="@Url.Action("GetImage", "Contact", new { id = Model.OrganizationId,  type = 3 })" class="img-thumbnail">}
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Сохранить" class="btn btn-success" />
+        @Html.ActionLink("Назад", "Index", null, new { @class = "btn btn-default" })
+    </div>
+</div>
 }
 
 @section Scripts {

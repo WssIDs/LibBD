@@ -196,6 +196,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901230803358_Add-Heritage-Culture-History-Fields.cs" />
+    <Compile Include="Migrations\201901230803358_Add-Heritage-Culture-History-Fields.Designer.cs">
+      <DependentUpon>201901230803358_Add-Heritage-Culture-History-Fields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901230845364_Add-Heritage-Culture-History-MimeTypeFields.cs" />
+    <Compile Include="Migrations\201901230845364_Add-Heritage-Culture-History-MimeTypeFields.Designer.cs">
+      <DependentUpon>201901230845364_Add-Heritage-Culture-History-MimeTypeFields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -275,6 +284,7 @@
     <Content Include="Images\legacy.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\placeholder.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -447,6 +457,14 @@
       <Project>{77405629-8be9-4d36-ba65-21ab78ae5a39}</Project>
       <Name>LibDB.DAL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201901230803358_Add-Heritage-Culture-History-Fields.resx">
+      <DependentUpon>201901230803358_Add-Heritage-Culture-History-Fields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901230845364_Add-Heritage-Culture-History-MimeTypeFields.resx">
+      <DependentUpon>201901230845364_Add-Heritage-Culture-History-MimeTypeFields.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
