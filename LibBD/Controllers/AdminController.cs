@@ -10,11 +10,11 @@ namespace LibBD.Controllers
     [Authorize(Roles = "admin")]
     public class AdminController : Controller
     {
-        IRepository<Author> repositoryHeritage;
-        IRepository<Author> repository;
+        IRepository<Card> repositoryHeritage;
+        IRepository<Card> repository;
         //IRepository<Author> repository;
 
-        public AdminController(IRepository<Author> repo)
+        public AdminController(IRepository<Card> repo)
         {
             repository = repo;
             repositoryHeritage = repo;
@@ -35,25 +35,19 @@ namespace LibBD.Controllers
         // GET: Admin/HeritageCreate
         public ActionResult HeritageCreate()
         {
-            var author = new Author();
-            author.CardYear = DateTime.Now.Year;
+            var author = new Card();
             author.Year = DateTime.Now.Year;
-
-            author.CardTitle = RandomString(7);
-            author.Collaborators = RandomString(15);
+            author.Title = RandomString(7);
             author.Description = RandomString(30);
             author.FirstName = RandomString(8);
             author.LastName = RandomString(10);
-            author.Title = RandomString(9);
-            author.Number = random.Next(1, 300);
-            author.Pages = RandomString(5);
 
             return View(author);
         }
 
         // POST: Admin/HeritageCreate
         [HttpPost]
-        public ActionResult HeritageCreate(Author author)
+        public ActionResult HeritageCreate(Card author)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +80,7 @@ namespace LibBD.Controllers
 
         // POST: Admin/Edit/5
         [HttpPost]
-        public ActionResult HeritageEdit(Author author)
+        public ActionResult HeritageEdit(Card author)
         {
             if (ModelState.IsValid)
             {
@@ -152,15 +146,14 @@ namespace LibBD.Controllers
         // GET: Admin/Create
         public ActionResult Create()
         {
-            var author = new Author();
-            author.CardYear = DateTime.Now.Year;
+            var author = new Card();
             author.Year = DateTime.Now.Year;
             return View(author);
         }
 
         // POST: Admin/Create
         [HttpPost]
-        public ActionResult Create(Author author)
+        public ActionResult Create(Card author)
         {
             if (ModelState.IsValid)
             {
@@ -185,7 +178,7 @@ namespace LibBD.Controllers
 
         // POST: Admin/Edit/5
         [HttpPost]
-        public ActionResult Edit(Author author)
+        public ActionResult Edit(Card author)
         {
             if (ModelState.IsValid)
             {

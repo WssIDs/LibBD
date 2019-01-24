@@ -11,7 +11,7 @@ namespace LibDB.DAL
 {
     public partial class ApplicationDbContext
     {
-        public DbSet<Author> Authors { get; set; }
+        public DbSet<Card> Cards { get; set; }
         public DbSet<Organization> Organizations { get; set; }
 
         public void Populate()

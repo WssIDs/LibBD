@@ -25,7 +25,7 @@ namespace LibBD
         protected override IKernel CreateKernel()
         {
             IKernel kernel = new StandardKernel();
-            kernel.Bind<IRepository<Author>>().To<AuthorRepository>();
+            kernel.Bind<IRepository<Card>>().To<CardRepository>();
             kernel.Bind<IRepository<Organization>>().To<OrganizationRepository>();
             return kernel;
         }

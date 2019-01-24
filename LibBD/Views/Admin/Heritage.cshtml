@@ -1,4 +1,4 @@
-﻿@model IEnumerable<LibDB.DAL.Author>
+﻿@model IEnumerable<LibDB.DAL.Card>
 
 @{
     ViewBag.Title = "Администрирование баз";
@@ -17,51 +17,51 @@
         <tr>
             <th style="width: 80px">ID</th>
             <th>Заглавие</th>
-            <th style="width: 100px"><i class="fa fa-calendar"></i> Год</th>
-            <th><i class="fa fa-users"></i> ФИО</th>
-            <th>Название</th>
-            <th style="width: 180px"><i class="fa fa-calendar"></i> Год выпуска</th>
+            <th><i class="fa fa-calendar"></i> Год</th>
+            <th>ФИО</th>
+            <th>Автор (Соавторы)</th>
+            <th>Описание</th>
             <th colspan="3" align="center"><i class="fa fa-gear"></i></th>
         </tr>
     </thead>
     <tbody id="HeritageTable">
         @foreach (var item in Model)
         {
-            <tr>
-                <th scope="row">
-                    @Html.DisplayFor(model => item.AuthorId)
-                </th>
-                <td>
-                    @Html.DisplayFor(model => item.CardTitle)
-                </td>
-                <td align="center">
-                    @Html.DisplayFor(model => item.CardYear)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.LastName) @Html.DisplayFor(model => item.FirstName)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.Title)
-                </td>
-                <td align="center">
-                    @Html.DisplayFor(model => item.Year)
-                </td>
-                <td width="40px">
-                    <a href="@Url.Action("HeritageEdit", "Admin",new { id = item.AuthorId })" class="btn btn-sm btn-outline-primary">
-                        <i class="fa fa-edit"></i>
-                    </a>
-                </td>
-                <td width="40px">
-                    <a href="@Url.Action("HeritageDetails", "Admin",new { id = item.AuthorId })" class="btn btn-sm btn-outline-info">
-                        <i class="fa fa-eye"></i>
-                    </a>
-                </td>
-                <td width="40px">
-                    <a href="@Url.Action("HeritageDelete", "Admin",new { id = item.AuthorId })" class="btn btn-sm btn-outline-danger">
-                        <i class="fa fa-trash"></i>
-                    </a>
-                </td>
-            </tr>
+        <tr>
+            <th scope="row">
+                @Html.DisplayFor(model => item.Id)
+            </th>
+            <td>
+                @Html.DisplayFor(model => item.Title)
+            </td>
+            <td align="center">
+                @Html.DisplayFor(model => item.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.LastName) @Html.DisplayFor(model => item.FirstName) @Html.DisplayFor(model => item.MiddleName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Collaborators)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Description)
+            </td>
+            <td width="40px">
+                <a href="@Url.Action("HeritageEdit", "Admin",new { id = item.Id })" class="btn btn-sm btn-outline-primary">
+                    <i class="fa fa-edit"></i>
+                </a>
+            </td>
+            <td width="40px">
+                <a href="@Url.Action("HeritageDetails", "Admin",new { id = item.Id })" class="btn btn-sm btn-outline-info">
+                    <i class="fa fa-eye"></i>
+                </a>
+            </td>
+            <td width="40px">
+                <a href="@Url.Action("HeritageDelete", "Admin",new { id = item.Id })" class="btn btn-sm btn-outline-danger">
+                    <i class="fa fa-trash"></i>
+                </a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

@@ -208,6 +208,22 @@
     <Compile Include="Migrations\201901232007140_Remove-ImageTypeAndData.Designer.cs">
       <DependentUpon>201901232007140_Remove-ImageTypeAndData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901241125246_RenameAuthorsToCard.cs" />
+    <Compile Include="Migrations\201901241125246_RenameAuthorsToCard.Designer.cs">
+      <DependentUpon>201901241125246_RenameAuthorsToCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901241129410_UpdateCard-AddBodyCard.cs" />
+    <Compile Include="Migrations\201901241129410_UpdateCard-AddBodyCard.Designer.cs">
+      <DependentUpon>201901241129410_UpdateCard-AddBodyCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901241155484_UpdateCard-RemoveRequariedMiddleName.cs" />
+    <Compile Include="Migrations\201901241155484_UpdateCard-RemoveRequariedMiddleName.Designer.cs">
+      <DependentUpon>201901241155484_UpdateCard-RemoveRequariedMiddleName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901241208502_UpdateCard-AddCollaborators.cs" />
+    <Compile Include="Migrations\201901241208502_UpdateCard-AddCollaborators.Designer.cs">
+      <DependentUpon>201901241208502_UpdateCard-AddCollaborators.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -471,6 +487,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901232007140_Remove-ImageTypeAndData.resx">
       <DependentUpon>201901232007140_Remove-ImageTypeAndData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901241125246_RenameAuthorsToCard.resx">
+      <DependentUpon>201901241125246_RenameAuthorsToCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901241129410_UpdateCard-AddBodyCard.resx">
+      <DependentUpon>201901241129410_UpdateCard-AddBodyCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901241155484_UpdateCard-RemoveRequariedMiddleName.resx">
+      <DependentUpon>201901241155484_UpdateCard-RemoveRequariedMiddleName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901241208502_UpdateCard-AddCollaborators.resx">
+      <DependentUpon>201901241208502_UpdateCard-AddCollaborators.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

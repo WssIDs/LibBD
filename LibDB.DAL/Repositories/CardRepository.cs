@@ -7,21 +7,21 @@ using System.Threading.Tasks;
 
 namespace LibDB.DAL
 {
-    public class AuthorRepository : IRepository<Author>
+    public class CardRepository : IRepository<Card>
     {
         private ApplicationDbContext context;
-        private DbSet<Author> table;
+        private DbSet<Card> table;
         /// <summary>
         /// Конструктор класса
         /// </summary>
         /// <param name="ctx">Контекст базы данных</param>
-        public AuthorRepository(ApplicationDbContext ctx)
+        public CardRepository(ApplicationDbContext ctx)
         {
             context = ctx;
-            table = context.Authors;
+            table = context.Cards;
         }
 
-        public void Create(Author t)
+        public void Create(Card t)
         {
             table.Add(t);
             context.SaveChanges();
@@ -30,38 +30,38 @@ namespace LibDB.DAL
         public void Delete(int id)
         {
             context
-            .Entry(new Author { AuthorId = id })
+            .Entry(new Card { Id = id })
             .State = EntityState.Deleted;
             context.SaveChanges();
         }
 
-        public IEnumerable<Author> Find(Func<Author, bool> predicate)
+        public IEnumerable<Card> Find(Func<Card, bool> predicate)
         {
             return table.Where(predicate).ToList();
         }
 
-        public Author Get(int id)
+        public Card Get(int id)
         {
             return table.Find(id);
         }
 
-        public IEnumerable<Author> GetAll()
+        public IEnumerable<Card> GetAll()
         {
             return table;
         }
 
-        public Task<Author> GetAsync(int id)
+        public Task<Card> GetAsync(int id)
         {
-            return context.Authors.FindAsync(id);
+            return context.Cards.FindAsync(id);
         }
 
-        public void Update(Author t)
+        public void Update(Card t)
         {
-            var author = context.Authors
+            var author = context.Cards
                              .AsNoTracking()
-                             .Where(ct => ct.AuthorId == t.AuthorId)
+                             .Where(ct => ct.Id == t.Id)
                              .FirstOrDefault();
-            context.Entry<Author>(t).State = EntityState.Modified;
+            context.Entry<Card>(t).State = EntityState.Modified;
             context.SaveChanges();
         }
     }

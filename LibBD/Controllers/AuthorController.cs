@@ -10,10 +10,10 @@ namespace LibBD.Controllers
 {
     public class AuthorController : Controller
     {
-        IRepository<Author> repository;
+        IRepository<Card> repository;
         int pageSize = 5;
 
-        public AuthorController(IRepository<Author> repo)
+        public AuthorController(IRepository<Card> repo)
         {
             repository = repo;
         }
@@ -22,9 +22,9 @@ namespace LibBD.Controllers
         public ActionResult Index(string group, int page = 1)
         {
             var lst = repository.GetAll().Where(d => group == null
-                             || d.CardYear.Equals(group))
-                     .OrderBy(d => d.CardYear);
-            var model = PageListViewModel<Author>.CreatePage(lst, page, pageSize);
+                             || d.Year.Equals(group))
+                     .OrderByDescending(d => d.Year);
+            var model = PageListViewModel<Card>.CreatePage(lst, page, pageSize);
 
             if (Request.IsAjaxRequest())
             {

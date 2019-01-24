@@ -1,22 +1,34 @@
-﻿@model LibDB.DAL.Author
+﻿@model LibDB.DAL.Card
 <div class="card mb-5 shadow">
     <div class="card-header text-uppercase text-light bg-primary">
-        <span class="badge badge-light badge-pill float-left m-1">@Model.AuthorId</span> @Model.CardTitle <span class="badge badge-dark float-right m-1">@Model.CardYear</span>
+        <span class="badge badge-light badge-pill float-left m-1">@Model.Id</span> @Model.Title <span class="badge badge-dark float-right m-1">@Model.Year</span>
 </div>
-    <div class="card-body">
-        <h6 class="card-title">@Model.LastName @Model.FirstName</h6>
-    </div>
-    <ul class="list-group list-group-flush list-inline">
-        <li class="list-group-item">@Model.Collaborators</li>
-        <li class="list-group-item">@Model.Title</li>
-        <li class="list-group-item">@Model.Year</li>
-        <li class="list-group-item">@Model.Number</li>
-        <li class="list-group-item">@Model.Pages стр.</li>
-        <li class="list-group-item">@Model.Description</li>
-    </ul>
+    @*<div class="card-body">
+        <h6 class="card-title">@Model.LastName @Model.FirstName @Model.MiddleName</h6>
+    </div>*@
     <div class="card-footer text-muted">
-        <p><strong>@Model.LastName, @Model.FirstName.First().</strong></p>
-        <p>@Model.CardTitle [Текст] / @Model.Collaborators // @Model.Title. - @Model.Year. - @Model.Number. - C. @Model.Pages.</p>
+        <p>
+        @if (!Model.LastName.IsEmpty())
+        {
+            <strong>@Model.LastName, @Model.FirstName.First().</strong>
+        }
+        </p>
+        <p>
+            @Model.Title [Текст]
+                @if (!Model.Collaborators.IsEmpty())
+                {
+                    <span>/ @Model.Collaborators</span>
+                }
+                else
+                {
+                    if (!Model.LastName.IsEmpty())
+                    {
+                        <span>/ @Model.LastName @Model.FirstName @Model.MiddleName</span>
+                    }
+                }
+                //
+            </p>
+        <p>@Model.Body</p>
         <p>@Model.Description</p>
     </div>
 </div>
