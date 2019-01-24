@@ -1,10 +1,18 @@
 ﻿@model LibBD.Models.PageListViewModel<LibDB.DAL.Card>
 @using System.Text;
 @{
-    ViewBag.Title = "Наследие";
+    ViewBag.Title = "Писатели Клетчины";
 }
-<h2 class="mt-5">Наследие</h2>
+<h2 class="mt-5">Писатели Клетчины</h2>
 <hr />
-<div id="Index">
-    @Html.Partial("ListPartial", Model)
+<div class="row">
+    <div class="col-md-3">
+        @Html.Action("Side", "Author")
+    </div>
+    <div class="col-md-9">
+        <div id="Index">
+            @Html.Partial("ListPartial", Model)
+        </div>
+    </div>
 </div>
+

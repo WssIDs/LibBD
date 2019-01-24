@@ -1,4 +1,4 @@
-﻿@model IEnumerable<LibDB.DAL.Author>
+﻿@model IEnumerable<LibDB.DAL.Card>
 
 @{
     ViewBag.Title = "Администрирование баз";
@@ -12,7 +12,7 @@
         <div class="card">
             <img src="~/Images/placeholder.png" class="card-img-top">
             <div class="card-body">
-                <h3 class="card-title">Наследие</h3>
+                <h3 class="card-title">Писатели Клетчины</h3>
                 <p class="card-text">Карточки наследния библиотеки</p>
                 <p>@Html.ActionLink("Редактировать", "Heritage", "Admin", null, new { @class = "btn btn-primary" })</p>
             </div>

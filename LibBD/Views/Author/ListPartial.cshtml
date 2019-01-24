@@ -19,14 +19,14 @@
 
         row.InnerHtml += Html.Partial("ItemViewPartial", item);
 
-        if (i == 3) // если строка закончена
+        if (i == 5) // если строка закончена
         {
             // добавить строку в разметку
             result.Append(row.ToString());
         }
     }
 
-    if (i != 3) // если последняя строка не заполнена
+    if (i != 5) // если последняя строка не заполнена
     {
         // добавить строку в разметку
         result.Append(row.ToString());
@@ -36,4 +36,5 @@
 
 } <!-- Получить готовую разметку -->
 @MvcHtmlString.Create(result.ToString())
+
 @Html.Partial("PagerPartial", Model)

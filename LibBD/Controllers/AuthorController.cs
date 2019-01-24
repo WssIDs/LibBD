@@ -22,7 +22,8 @@ namespace LibBD.Controllers
         public ActionResult Index(string group, int page = 1)
         {
             var lst = repository.GetAll().Where(d => group == null
-                             || d.Year.Equals(group))
+                             || d.Year == Convert.ToInt32(group))
+                     .OrderBy(d => d.Title)
                      .OrderByDescending(d => d.Year);
             var model = PageListViewModel<Card>.CreatePage(lst, page, pageSize);
 
@@ -33,6 +34,16 @@ namespace LibBD.Controllers
 
 
             return View(model);
+        }
+
+        public PartialViewResult Side()
+        {
+            var group = repository
+                .GetAll()
+                .Select(d => d.Year)
+                .Distinct();
+
+            return PartialView(group);
         }
     }
 }

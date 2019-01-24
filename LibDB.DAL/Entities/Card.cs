@@ -16,13 +16,13 @@ namespace LibDB.DAL
         [Display(Name = "Заглавие карточки")]
         public string Title { get; set; } // Заглавие карточки
         [Required(ErrorMessage = "Введите год заполнения карточки")]
-        [Display(Name = "Год заполнения карточки")]
+        [Display(Name = "Год")]
         public int Year { get; set; } // Год заполнения карточки
-        [Display(Name = "Фамилия автора")]
+        [Display(Name = "Фамилия")]
         public string LastName { get; set; } // Фамилия автора (в роли категории)
-        [Display(Name = "Имя автора")]
+        [Display(Name = "Имя")]
         public string FirstName { get; set; } // Имя автора (в роли категории)
-        [Display(Name = "Отчество автора")]
+        [Display(Name = "Отчество")]
         public string MiddleName { get; set; } // Отчество автора (в роли категории)
         [Display(Name = "Автор (Соавторы)")]
         public string Collaborators { get; set; } // соавторы
