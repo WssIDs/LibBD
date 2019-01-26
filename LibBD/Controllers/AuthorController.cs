@@ -40,6 +40,7 @@ namespace LibBD.Controllers
         {
             var group = repository
                 .GetAll()
+                .OrderByDescending(d => d.Year)
                 .Select(d => d.Year)
                 .Distinct();
 
