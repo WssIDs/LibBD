@@ -1,14 +1,11 @@
 ﻿@model LibDB.DAL.Card
 
 @{
-    ViewBag.Title = "HeritageDelete";
+    ViewBag.Title = "Delete";
 }
 
-<h2 class="mt-5">Удаление</h2>
-
-<h3>Вы действительно хотите удалить карточку?</h3>
+<h2 class="mt-5">Вы действительно хотите удалить карточку?</h2>
 <div>
-    <h4>Писатели Клетчины</h4>
     <hr />
     <dl class="row">
         <dt class="col-md-3">
@@ -55,12 +52,13 @@
         </dd>
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions">
             <input type="submit" value="Удалить" class="btn btn-danger" />
-            @Html.ActionLink("Отмена", "Heritage", null, new { @class ="btn btn-dark"})
+            @Html.ActionLink("Отмена", "Index", null, new { @class = "btn btn-dark" })
         </div>
     }
 </div>

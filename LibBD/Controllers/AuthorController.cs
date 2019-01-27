@@ -19,13 +19,32 @@ namespace LibBD.Controllers
         }
 
         // GET: Author
-        public ActionResult Index(string group, int page = 1)
+        public ActionResult Index(string group, string searchString, int page = 1)
         {
             var lst = repository.GetAll().Where(d => group == null
                              || d.Year == Convert.ToInt32(group))
                      .OrderBy(d => d.Title)
                      .OrderByDescending(d => d.Year);
-            var model = PageListViewModel<Card>.CreatePage(lst, page, pageSize);
+
+            PageListViewModel<Card> model;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                var lstnew = lst.Where(s => s.Title.Contains(searchString)
+                || !String.IsNullOrEmpty(s.LastName) && s.LastName.Contains(searchString)
+                || !String.IsNullOrEmpty(s.FirstName) && s.FirstName.Contains(searchString)
+                || !String.IsNullOrEmpty(s.MiddleName) && s.MiddleName.Contains(searchString)
+                || !String.IsNullOrEmpty(s.Body) && s.Body.Contains(searchString)
+                || !String.IsNullOrEmpty(s.Description) && s.Description.Contains(searchString)
+                || !String.IsNullOrEmpty(s.Collaborators) && s.Collaborators.Contains(searchString)
+                );
+
+                model = PageListViewModel<Card>.CreatePage(lstnew, page, pageSize);
+            }
+            else
+            {
+                model = PageListViewModel<Card>.CreatePage(lst, page, pageSize);
+            }
 
             if (Request.IsAjaxRequest())
             {
@@ -34,6 +53,111 @@ namespace LibBD.Controllers
 
 
             return View(model);
+        }
+
+        // GET: Admin/HeritageCreate
+        [Authorize(Roles = "admin")]
+        public ActionResult Create()
+        {
+            var author = new Card();
+            author.Year = DateTime.Now.Year;
+
+            return View(author);
+        }
+
+        // POST: Admin/HeritageCreate
+        [HttpPost]
+        [Authorize(Roles = "admin")]
+        public ActionResult Create(Card author)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    repository.Create(author);
+                    return RedirectToAction("Index");
+                }
+                catch
+                {
+                    return View();
+                }
+            }
+            else return View(author);
+        }
+
+        // GET: Admin/Edit/5
+        [Authorize(Roles = "admin")]
+        public ActionResult Edit(int id)
+        {
+            return View(repository.Get(id));
+        }
+
+        // POST: Admin/Edit/5
+        [HttpPost]
+        [Authorize(Roles = "admin")]
+        public ActionResult Edit(Card author)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    repository.Update(author);
+                    return RedirectToAction("Index");
+                }
+                catch
+                {
+                    return View();
+                }
+            }
+            else return View(author);
+        }
+
+        // GET: Admin/Delete/5
+        [Authorize(Roles = "admin")]
+        public ActionResult Delete(int id)
+        {
+            return View(repository.Get(id));
+        }
+
+        // POST: Admin/Delete/5
+        [HttpPost]
+        [Authorize(Roles = "admin")]
+        public ActionResult Delete(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add delete logic here
+                repository.Delete(id);
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: Admin/Delete/5
+        [Authorize(Roles = "admin")]
+        public ActionResult Details(int id)
+        {
+            return View(repository.Get(id));
+        }
+
+        // POST: Admin/Delete/5
+        [HttpPost]
+        [Authorize(Roles = "admin")]
+        public ActionResult Details(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add delete logic here
+                repository.Get(id);
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
         }
 
         public PartialViewResult Side()

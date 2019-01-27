@@ -10,6 +10,25 @@
         @Html.Action("Side", "Author")
     </div>
     <div class="col-md-9">
+        @using (Html.BeginForm())
+        {
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="HeritageInput" name="SearchString" placeholder="Поиск..." aria-label="Recipient's username" aria-describedby="button-addon2">
+                <div class="input-group-append">
+                    <input type="submit" class="btn btn-dark" value="Поиск" />
+                    @{
+                        if (User.Identity.IsAuthenticated)
+                        {
+                            if (User.IsInRole("admin"))
+                            {
+                                @Html.ActionLink("Добавить", "Create", null, new { @class = "btn btn-success" })
+
+                            }
+                        }
+                    }
+                </div>
+            </div>
+        }
         <div id="Index">
             @Html.Partial("ListPartial", Model)
         </div>

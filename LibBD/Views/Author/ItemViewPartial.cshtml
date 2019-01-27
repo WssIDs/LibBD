@@ -1,7 +1,7 @@
 ﻿@model LibDB.DAL.Card
 <div class="card mb-3 shadow">
     <div class="card-header text-uppercase">
-        @Model.Title <span class="badge badge-dark float-right m-1">@Model.Year</span>
+        @Model.Title <a class="float-right" href="@Url.Action("Index", "Author", new { group = @Model.Year })"><span class="badge badge-dark m-1">@Model.Year</span></a>
     </div>
     @*<div class="card-body">
         <h6 class="card-title">@Model.LastName @Model.FirstName @Model.MiddleName</h6>
@@ -32,9 +32,27 @@
         <p>@Model.Description</p>
     </div>
     <div class="card-footer">
-        <p></p>
+        @{ 
+            if (User.Identity.IsAuthenticated)
+            {
+                if (User.IsInRole("admin"))
+                {
+                    <div class="btn-group pull-right" role="group" aria-label="Basic example">
+                        <a href="@Url.Action("Details", "Author", new { id = Model.Id })" class="btn btn-dark">
+                            <i class="fa fa-eye"></i>
+                        </a>
+                        <a href="@Url.Action("Edit", "Author", new { id = Model.Id })" class="btn btn-primary">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <a href="@Url.Action("Delete", "Author", new { id = Model.Id })" class="btn btn-danger">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    </div>
+                }
+            }
+         }
     </div>
 </div>
-    <!-- END Portlet PORTLET-->
-    @*</div>*@
+<!-- END Portlet PORTLET-->
+@*</div>*@
 

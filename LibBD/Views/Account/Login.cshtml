@@ -25,19 +25,19 @@
                     @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                 </div>
                 @*<div class="form-group">
-                    <div class="col-md-offset-3 col-md-9">
-                        <div class="checkbox">
-                            @Html.CheckBoxFor(m => m.RememberMe)
-                            @Html.LabelFor(m => m.RememberMe)
+                        <div class="col-md-offset-3 col-md-9">
+                            <div class="checkbox">
+                                @Html.CheckBoxFor(m => m.RememberMe)
+                                @Html.LabelFor(m => m.RememberMe)
+                            </div>
                         </div>
-                    </div>
-                </div>*@
+                    </div>*@
                 <div class="form-group">
                     <input type="submit" value="Войти" class="btn btn-dark" />
                 </div>
                 @*<p>
-                    @Html.ActionLink("Зарегистрировать нового пользователя", "Register")
-                </p>*@
+                        @Html.ActionLink("Зарегистрировать нового пользователя", "Register")
+                    </p>*@
                 @* Enable this once you have account confirmation enabled for password reset functionality
                     <p>
                         @Html.ActionLink("Forgot your password?", "ForgotPassword")

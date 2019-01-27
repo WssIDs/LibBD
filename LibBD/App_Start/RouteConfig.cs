@@ -13,19 +13,19 @@ namespace LibBD
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //routes.MapRoute(
+            //  name: "Authors",
+            //  url: "{controller}",
+            //  defaults: new
+            //  {
+            //      controller = "Author",
+            //      action = "Index",
+            //      page = 1,
+            //      group = (string)null
+            //  });
             routes.MapRoute(
-              name: "Heritage",
-              url: "Authors",
-              defaults: new
-              {
-                  controller = "Author",
-                  action = "Index",
-                  page = 1,
-                  group = (string)null
-              });
-            routes.MapRoute(
-            name: "HeritagePage",
-            url: "Authors/page{page}",
+            name: "AuthorsPage",
+            url: "Author/page{page}",
             defaults: new
             {
                 controller = "Author",
@@ -34,8 +34,8 @@ namespace LibBD
             },
             constraints: new { page = @"\d+" });
             routes.MapRoute(
-            name: "HeritageGroup",
-            url: "Authors/{group}",
+            name: "AuthorsGroup",
+            url: "Author/{group}",
             defaults: new
             {
                 controller = "Author",
@@ -44,8 +44,8 @@ namespace LibBD
             });
 
             routes.MapRoute(
-            name: "HeritageGroupPage",
-            url: "Authors/{group}/page{page}",
+            name: "AuthorsGroupPage",
+            url: "Author/{group}/page{page}",
             defaults: new
             {
                 controller = "Author",
