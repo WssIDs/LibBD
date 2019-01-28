@@ -14,6 +14,9 @@ namespace LibDB.DAL
         public DbSet<Card> Cards { get; set; }
         public DbSet<Organization> Organizations { get; set; }
 
+        public DbSet<TestAuth> TestAuths { get; set; }
+        public DbSet<TestCard> TestCards { get; set; }
+
         public void Populate()
         {
             if (!Roles.Any())
@@ -30,7 +33,7 @@ namespace LibDB.DAL
                 var userAdmin = new ApplicationUser
                 {
                     Email = "admin@wssids.by",
-                    UserName = "admin@wssids.by",
+                    UserName = "WssIDs",
                     //NickName = "WssIDs"
                 };
 

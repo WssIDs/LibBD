@@ -1,7 +1,7 @@
 ﻿@model LibDB.DAL.Card
 <div class="card mb-3 shadow">
     <div class="card-header text-uppercase">
-        @Model.Title <a class="float-right" href="@Url.Action("Index", "Author", new { group = @Model.Year })"><span class="badge badge-dark m-1">@Model.Year</span></a>
+        @Model.Title <a class="float-right" href="@Url.Action("List", "Author", new { group = @Model.Year })"><span class="badge badge-dark m-1">@Model.Year</span></a>
     </div>
     @*<div class="card-body">
         <h6 class="card-title">@Model.LastName @Model.FirstName @Model.MiddleName</h6>
@@ -10,7 +10,7 @@
         <p>
         @if (!Model.LastName.IsEmpty())
         {
-            <strong>@Model.LastName, @Model.FirstName.First().</strong>
+            <strong>@Model.LastName, @Model.FirstName[0].</strong>
         }
         </p>
         <p>

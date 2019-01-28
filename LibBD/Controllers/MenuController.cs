@@ -19,7 +19,7 @@ namespace LibBD.Controllers
             items = new List<MenuItem>
             {
                 new MenuItem{Name="Главная", Controller="Home", Action="Index", Active=string.Empty},
-                new MenuItem{Name="Писатели Клетчины", Controller="Author", Action="Index", Active=string.Empty},
+                new MenuItem{Name="Писатели Клетчины", Controller="Author", Action="List", Active=string.Empty},
                 //new MenuItem{Name="Культура", Controller="Author", Action="Index", Active=string.Empty},
                 //new MenuItem{Name="История", Controller="Author", Action="Index", Active=string.Empty},
                 new MenuItem{Name="Контакты", Controller="Contact", Action="Index", Active=string.Empty},

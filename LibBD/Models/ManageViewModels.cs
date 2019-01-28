@@ -58,6 +58,13 @@ namespace LibBD.Models
         public string ConfirmPassword { get; set; }
     }
 
+    public class ChangeUserNameViewModel
+    {
+        [Required]
+        [Display(Name = "Имя пользователя")]
+        public string UserName { get; set; }
+    }
+
     public class AddPhoneNumberViewModel
     {
         [Required]

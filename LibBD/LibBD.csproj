@@ -186,6 +186,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\TestAuthsController.cs" />
+    <Compile Include="Controllers\TestCardsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -216,6 +218,18 @@
     <Compile Include="Migrations\201901241208502_UpdateCard-AddCollaborators.cs" />
     <Compile Include="Migrations\201901241208502_UpdateCard-AddCollaborators.Designer.cs">
       <DependentUpon>201901241208502_UpdateCard-AddCollaborators.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901281132000_addTestAuthorsAndCards.cs" />
+    <Compile Include="Migrations\201901281132000_addTestAuthorsAndCards.Designer.cs">
+      <DependentUpon>201901281132000_addTestAuthorsAndCards.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901281255473_addTestAuthIdInTestCard.cs" />
+    <Compile Include="Migrations\201901281255473_addTestAuthIdInTestCard.Designer.cs">
+      <DependentUpon>201901281255473_addTestAuthIdInTestCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901281303089_changeTestAuthToIEnurable-Cards.cs" />
+    <Compile Include="Migrations\201901281303089_changeTestAuthToIEnurable-Cards.Designer.cs">
+      <DependentUpon>201901281303089_changeTestAuthToIEnurable-Cards.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -424,7 +438,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Menu\Main.cshtml" />
     <Content Include="Views\Menu\Footer.cshtml" />
-    <Content Include="Views\Author\Index.cshtml" />
+    <Content Include="Views\Author\List.cshtml" />
     <Content Include="Views\Author\ListPartial.cshtml" />
     <Content Include="Views\Author\PagerPartial.cshtml" />
     <Content Include="Views\Author\ItemViewPartial.cshtml" />
@@ -447,6 +461,13 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\TestAuths\Index.cshtml" />
+    <Content Include="Views\TestAuths\Details.cshtml" />
+    <Content Include="Views\TestAuths\Create.cshtml" />
+    <Content Include="Views\TestCards\Index.cshtml" />
+    <Content Include="Views\TestCards\Create.cshtml" />
+    <Content Include="Views\TestCards\Edit.cshtml" />
+    <Content Include="Views\TestCards\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -481,6 +502,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901241208502_UpdateCard-AddCollaborators.resx">
       <DependentUpon>201901241208502_UpdateCard-AddCollaborators.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901281132000_addTestAuthorsAndCards.resx">
+      <DependentUpon>201901281132000_addTestAuthorsAndCards.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901281255473_addTestAuthIdInTestCard.resx">
+      <DependentUpon>201901281255473_addTestAuthIdInTestCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901281303089_changeTestAuthToIEnurable-Cards.resx">
+      <DependentUpon>201901281303089_changeTestAuthToIEnurable-Cards.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

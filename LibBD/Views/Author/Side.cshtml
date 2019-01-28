@@ -6,13 +6,13 @@
     @{
         if (txt.Equals("Все"))
         {
-            <a href="@Url.Action("Index", "Author")" class="list-group-item list-group-item-action active">
+            <a href="@Url.Action("List", "Author")" class="list-group-item list-group-item-action active">
                 Все
             </a>
         }
         else
         {
-            <a href="@Url.Action("Index", "Author")" class="list-group-item list-group-item-action">
+            <a href="@Url.Action("List", "Author")" class="list-group-item list-group-item-action">
                 Все
             </a>
         }
@@ -34,13 +34,13 @@
 
             if (item == i)
             {
-                <a class="list-group-item list-group-item-action active" href="@Url.Action("Index", "Author", new { group = item })">
+                <a class="list-group-item list-group-item-action active" href="@Url.Action("List", "Author", new { group = item })">
                     @item.ToString()
                 </a>
             }
             else
             {
-                <a class="list-group-item list-group-item-action" href="@Url.Action("Index", "Author", new { group = item })">
+                <a class="list-group-item list-group-item-action" href="@Url.Action("List", "Author", new { group = item })">
                     @item.ToString()
                 </a>
             }

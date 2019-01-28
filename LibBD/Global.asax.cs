@@ -27,6 +27,8 @@ namespace LibBD
             IKernel kernel = new StandardKernel();
             kernel.Bind<IRepository<Card>>().To<CardRepository>();
             kernel.Bind<IRepository<Organization>>().To<OrganizationRepository>();
+            kernel.Bind<IRepository<TestAuth>>().To<TestAuthRepository>();
+            kernel.Bind<IRepository<TestCard>>().To<TestCardRepository>();
             return kernel;
         }
     }

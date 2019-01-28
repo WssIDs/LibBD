@@ -13,43 +13,45 @@ namespace LibBD
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            //routes.MapRoute(
-            //  name: "Authors",
-            //  url: "{controller}",
-            //  defaults: new
-            //  {
-            //      controller = "Author",
-            //      action = "Index",
-            //      page = 1,
-            //      group = (string)null
-            //  });
             routes.MapRoute(
-            name: "AuthorsPage",
-            url: "Author/page{page}",
+              name: "",
+              url: "Catalog",
+              defaults: new
+              {
+                  controller = "Author",
+                  action = "List",
+                  page = 1,
+                  group = (string)null
+              });
+
+            routes.MapRoute(
+            name: "",
+            url: "Catalog/page{page}",
             defaults: new
             {
                 controller = "Author",
-                action = "Index",
+                action = "List",
                 group = (string)null
             },
             constraints: new { page = @"\d+" });
+
             routes.MapRoute(
-            name: "AuthorsGroup",
-            url: "Author/{group}",
+            name: "",
+            url: "Catalog/{group}",
             defaults: new
             {
                 controller = "Author",
-                action = "Index",
+                action = "List",
                 page = 1
             });
 
             routes.MapRoute(
-            name: "AuthorsGroupPage",
-            url: "Author/{group}/page{page}",
+            name: "",
+            url: "Catalog/{group}/page{page}",
             defaults: new
             {
                 controller = "Author",
-                action = "Index"
+                action = "List"
             },
             constraints: new
             {
@@ -61,6 +63,8 @@ namespace LibBD
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+
         }
     }
 }

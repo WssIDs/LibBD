@@ -49,9 +49,8 @@ namespace LibBD.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Электронная почта")]
-        [EmailAddress]
-        public string Email { get; set; }
+        [Display(Name = "Имя пользователя")]
+        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -64,6 +63,10 @@ namespace LibBD.Models
 
     public class RegisterViewModel
     {
+        [Required]
+        [Display(Name = "Имя пользователя")]
+        public string UserName { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Электронная почта")]
@@ -84,9 +87,8 @@ namespace LibBD.Models
     public class ResetPasswordViewModel
     {
         [Required]
-        [EmailAddress]
-        [Display(Name = "Электронная почта")]
-        public string Email { get; set; }
+        [Display(Name = "Имя пользователя")]
+        public string UserName { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]

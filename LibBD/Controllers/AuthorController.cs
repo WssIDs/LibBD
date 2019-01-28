@@ -11,7 +11,7 @@ namespace LibBD.Controllers
     public class AuthorController : Controller
     {
         IRepository<Card> repository;
-        int pageSize = 5;
+        private int pageSize = 5;
 
         public AuthorController(IRepository<Card> repo)
         {
@@ -19,7 +19,7 @@ namespace LibBD.Controllers
         }
 
         // GET: Author
-        public ActionResult Index(string group, string searchString, int page = 1)
+        public ActionResult List(string group, string searchString, int page = 1)
         {
             var lst = repository.GetAll().Where(d => group == null
                              || d.Year == Convert.ToInt32(group))
@@ -75,7 +75,7 @@ namespace LibBD.Controllers
                 try
                 {
                     repository.Create(author);
-                    return RedirectToAction("Index");
+                    return RedirectToAction("List");
                 }
                 catch
                 {
@@ -102,7 +102,7 @@ namespace LibBD.Controllers
                 try
                 {
                     repository.Update(author);
-                    return RedirectToAction("Index");
+                    return RedirectToAction("List");
                 }
                 catch
                 {
@@ -128,7 +128,7 @@ namespace LibBD.Controllers
             {
                 // TODO: Add delete logic here
                 repository.Delete(id);
-                return RedirectToAction("Index");
+                return RedirectToAction("List");
             }
             catch
             {
@@ -152,7 +152,7 @@ namespace LibBD.Controllers
             {
                 // TODO: Add delete logic here
                 repository.Get(id);
-                return RedirectToAction("Index");
+                return RedirectToAction("List");
             }
             catch
             {
