@@ -7,6 +7,13 @@
 <h2>List</h2>
 
 <p>
+    @if (ViewBag.ListItem != null)
+    {
+        foreach (var item in ViewBag.ListItem)
+        {
+            @Html.ActionLink((string)item.Title, "List", new { group = item.Id }, new { @class = "btn btn-dark" })
+        }
+    }
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
@@ -18,7 +25,7 @@
             @Html.DisplayNameFor(model => model.Year)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AuthId)
+            @Html.DisplayNameFor(model => model.Auth.Title)
         </th>
         <th></th>
     </tr>
@@ -32,7 +39,7 @@
             @Html.DisplayFor(modelItem => item.Year)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.AuthId)
+            @Html.DisplayFor(modelItem => item.Auth.Title)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

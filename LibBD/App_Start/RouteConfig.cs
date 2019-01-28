@@ -13,6 +13,29 @@ namespace LibBD
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+
+            routes.MapRoute(
+            name: "",
+            url: "Cards",
+            defaults: new
+            {
+                controller = "TestCards",
+                action = "List",
+                group = (string)null
+            });
+
+            routes.MapRoute(
+            name: "",
+            url: "Cards/{group}",
+            defaults: new
+            {
+                controller = "TestCards",
+                action = "List",
+            });
+
+
+
+            ///////////////////////
             routes.MapRoute(
               name: "",
               url: "Catalog",

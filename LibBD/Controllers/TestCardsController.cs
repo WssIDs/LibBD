@@ -24,9 +24,18 @@ namespace LibBD.Controllers
             return View(repository.GetAll());
         }
 
-        public ActionResult List(int group)
+        public ActionResult List(string group)
         {
-            var lst = repository.GetAll().Where(a => a.AuthId == group);
+            ViewBag.ListItem = repositoryAuths.GetAll();
+
+            if (!String.IsNullOrEmpty(group))
+            {
+                var nlst = repository.GetAll().Where(a => a.AuthId == Convert.ToInt32(group));
+
+                return View(nlst);
+            }
+
+            var lst = repository.GetAll();
             return View(lst);
         }
 
@@ -54,7 +63,7 @@ namespace LibBD.Controllers
                 try
                 {
                     repository.Create(card);
-                    return RedirectToAction("Index");
+                    return RedirectToAction("List");
                 }
                 catch
                 {
