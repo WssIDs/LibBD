@@ -1,4 +1,5 @@
-﻿using LibDB.DAL;
+﻿using LibBD.Models;
+using LibDB.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,8 @@ namespace LibBD.Controllers
         IRepository<TestCard> repository;
         IRepository<TestAuth> repositoryAuths;
 
+        int pageSize = 3;
+
         public TestCardsController(IRepository<TestCard> repo, IRepository<TestAuth> repoAuth)
         {
             repository = repo;
@@ -24,19 +27,82 @@ namespace LibBD.Controllers
             return View(repository.GetAll());
         }
 
-        public ActionResult List(string group)
+        public ActionResult List(string maingroup, string group,string searchtext, int page = 1)
         {
             ViewBag.ListItem = repositoryAuths.GetAll();
 
-            if (!String.IsNullOrEmpty(group))
-            {
-                var nlst = repository.GetAll().Where(a => a.AuthId == Convert.ToInt32(group));
+            PageListViewModel<TestCard> model;
 
-                return View(nlst);
+            if (!String.IsNullOrEmpty(maingroup))
+            {
+                if (!String.IsNullOrEmpty(searchtext))
+                {
+                    var nlst = repository.GetAll().Where(a => a.AuthId == Convert.ToInt32(maingroup) && group == null
+                                                            || a.Year == Convert.ToInt32(group))
+                                                            .OrderBy(d => d.Title)
+                                                            .OrderByDescending(d => d.Year);
+
+                    var lstnew = nlst.Where(s => s.Title.Contains(searchtext)
+                    //|| !String.IsNullOrEmpty(s.) && s.LastName.Contains(searchString)
+                    //|| !String.IsNullOrEmpty(s.FirstName) && s.FirstName.Contains(searchString)
+                    //|| !String.IsNullOrEmpty(s.MiddleName) && s.MiddleName.Contains(searchString)
+                    //|| !String.IsNullOrEmpty(s.Body) && s.Body.Contains(searchString)
+                    //|| !String.IsNullOrEmpty(s.Description) && s.Description.Contains(searchString)
+                    //|| !String.IsNullOrEmpty(s.Collaborators) && s.Collaborators.Contains(searchString)
+                    );
+
+                    model = PageListViewModel<TestCard>.CreatePage(lstnew, page, pageSize);
+
+                }
+                else
+                {
+                    var nlst = repository.GetAll().Where(a => a.AuthId == Convert.ToInt32(maingroup) && group == null
+                                                            || a.Year == Convert.ToInt32(group))
+                                                            .OrderBy(d => d.Title)
+                                                            .OrderByDescending(d => d.Year);
+                    //var lst = repository.GetAll();
+                    model = PageListViewModel<TestCard>.CreatePage(nlst, page, pageSize);
+                }
+            }
+            else
+            {
+                if (!String.IsNullOrEmpty(searchtext))
+                {
+                    var nlst = repository.GetAll().Where(a => group == null
+                                        || a.Year == Convert.ToInt32(group))
+                                        .OrderBy(d => d.Title)
+                                        .OrderByDescending(d => d.Year);
+
+                    var lstnew = nlst.Where(s => s.Title.Contains(searchtext)
+                    //|| !String.IsNullOrEmpty(s.) && s.LastName.Contains(searchString)
+                    //|| !String.IsNullOrEmpty(s.FirstName) && s.FirstName.Contains(searchString)
+                    //|| !String.IsNullOrEmpty(s.MiddleName) && s.MiddleName.Contains(searchString)
+                    //|| !String.IsNullOrEmpty(s.Body) && s.Body.Contains(searchString)
+                    //|| !String.IsNullOrEmpty(s.Description) && s.Description.Contains(searchString)
+                    //|| !String.IsNullOrEmpty(s.Collaborators) && s.Collaborators.Contains(searchString)
+                    );
+
+                    model = PageListViewModel<TestCard>.CreatePage(lstnew, page, pageSize);
+
+                }
+                else
+                {
+                    var nlst = repository.GetAll().Where(a => group == null
+                                        || a.Year == Convert.ToInt32(group))
+                                        .OrderBy(d => d.Title)
+                                        .OrderByDescending(d => d.Year);
+                    //var lst = repository.GetAll();
+                    model = PageListViewModel<TestCard>.CreatePage(nlst, page, pageSize);
+                }
             }
 
-            var lst = repository.GetAll();
-            return View(lst);
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("ListPartial", model);
+            }
+
+
+            return View(model);
         }
 
         // GET: TestCards/Details/5
@@ -119,6 +185,14 @@ namespace LibBD.Controllers
             {
                 return View();
             }
+        }
+
+        public PartialViewResult Side()
+        {
+            var databases = repositoryAuths
+                .GetAll();
+
+            return PartialView(databases);
         }
     }
 }

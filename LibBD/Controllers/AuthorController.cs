@@ -46,6 +46,7 @@ namespace LibBD.Controllers
                 model = PageListViewModel<Card>.CreatePage(lst, page, pageSize);
             }
 
+
             if (Request.IsAjaxRequest())
             {
                 return PartialView("ListPartial", model);

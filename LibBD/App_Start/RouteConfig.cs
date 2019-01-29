@@ -21,19 +21,95 @@ namespace LibBD
             {
                 controller = "TestCards",
                 action = "List",
-                group = (string)null
+                maingroup = (string)null,
+                group = (string)null,
+                page = 1,
             });
 
             routes.MapRoute(
             name: "",
-            url: "Cards/{group}",
+            url: "Cards/page{page}",
             defaults: new
             {
                 controller = "TestCards",
                 action = "List",
+                maingroup = (string)null,
+                group = (string)null
+            },
+            constraints: new { page = @"\d+" });
+
+            routes.MapRoute(
+            name: "",
+            url: "Cards/year{group}",
+            defaults: new
+            {
+                controller = "TestCards",
+                action = "List",
+                maingroup = (string)null,
+                page = 1
             });
 
+            routes.MapRoute(
+            name: "",
+            url: "Cards/year{group}/page{page}",
+            defaults: new
+            {
+                controller = "TestCards",
+                action = "List",
+                maingroup = (string)null
+            },
+            constraints: new
+            {
+                page = @"\d+"
+            });
 
+            routes.MapRoute(
+            name: "",
+            url: "Cards/base{maingroup}",
+            defaults: new
+            {
+                controller = "TestCards",
+                action = "List",
+                group = (string)null,
+                page = 1
+            });
+
+            routes.MapRoute(
+            name: "",
+            url: "Cards/base{maingroup}/page{page}",
+            defaults: new
+            {
+                controller = "TestCards",
+                group = (string)null,
+                action = "List"
+            },
+            constraints: new
+            {
+                page = @"\d+"
+            });
+
+            routes.MapRoute(
+            name: "",
+            url: "Cards/base{maingroup}/year{group}",
+            defaults: new
+            {
+                controller = "TestCards",
+                action = "List",
+                page = 1
+            });
+
+            routes.MapRoute(
+            name: "",
+            url: "Cards/base{maingroup}/year{group}/page{page}",
+            defaults: new
+            {
+                controller = "TestCards",
+                action = "List"
+            },
+            constraints: new
+            {
+                page = @"\d+"
+            });
 
             ///////////////////////
             routes.MapRoute(

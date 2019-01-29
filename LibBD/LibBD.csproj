@@ -468,6 +468,10 @@
     <Content Include="Views\TestCards\Create.cshtml" />
     <Content Include="Views\TestCards\Edit.cshtml" />
     <Content Include="Views\TestCards\List.cshtml" />
+    <Content Include="Views\TestCards\ListPartial.cshtml" />
+    <Content Include="Views\TestCards\PagerPartial.cshtml" />
+    <Content Include="Views\TestCards\ItemViewPartial.cshtml" />
+    <Content Include="Views\TestCards\SIde.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

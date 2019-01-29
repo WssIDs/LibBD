@@ -1,0 +1,49 @@
+﻿@model IEnumerable<LibDB.DAL.TestAuth>
+
+<!-- получение названия текущей группы из запроса -->
+@{var txt = Request.RequestContext.RouteData.Values["maingroup"] ?? "Все";}
+<div class="list-group">
+    @{
+        if (txt.Equals("Все"))
+        {
+            <a href="@Url.Action("List", "TestCards")" class="list-group-item list-group-item-action active">
+                Все
+            </a>
+        }
+        else
+        {
+            <a href="@Url.Action("List", "TestCards")" class="list-group-item list-group-item-action">
+                Все
+            </a>
+        }
+    }
+
+    @{
+        int i = 0;
+        if (int.TryParse(txt.ToString(), out i))
+        {
+            i = Convert.ToInt32(txt);
+        }
+        else
+        {
+            i = 0;
+        }
+
+        foreach (var item in Model)
+        {
+
+            if (item.Id == i)
+            {
+                <a class="list-group-item list-group-item-action active" href="@Url.Action("List", "TestCards", new { maingroup = item.Id })">
+                    @item.Title
+                </a>
+            }
+            else
+            {
+                <a class="list-group-item list-group-item-action" href="@Url.Action("List", "TestCards", new { maingroup = item.Id })">
+                    @item.Title
+                </a>
+            }
+        }
+    }
+</div>

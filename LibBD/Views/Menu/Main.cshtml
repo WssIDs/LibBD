@@ -12,6 +12,10 @@
                 }
             }
         }
+        else if (item.Controller == "TestAuths")
+        {
+            <li class="nav-item @item.Active">@Html.ActionLink(item.Name, item.Action, item.Controller, new { maingroup = item.Group }, new { @class = "nav-link" })</li>
+        }
         else
         {
             <li class="nav-item @item.Active">@Html.ActionLink(item.Name, item.Action, item.Controller, null, new { @class = "nav-link" })</li>

@@ -10,17 +10,22 @@ namespace LibBD.Controllers
     public class HomeController : Controller
     {
         IRepository<Organization> repository;
+        IRepository<TestAuth> repositoryAuths;
 
-        public HomeController(IRepository<Organization> repo)
+        public HomeController(IRepository<Organization> repo, IRepository<TestAuth> repoA)
         {
             repository = repo;
+            repositoryAuths = repoA;
         }
 
         public ActionResult Index()
         {
             var model = repository.GetAll().First();
+            ViewBag.Organization = model;
 
-            return View(model);
+            var modelA = repositoryAuths.GetAll();
+
+            return View(modelA);
         }
     }
 }

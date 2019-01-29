@@ -13,17 +13,33 @@ namespace LibBD.Controllers
         List<MenuItem> items;
 
         IRepository<Organization> repository;
+        IRepository<TestAuth> repositoryA;
 
-        public MenuController(IRepository<Organization> repo)
+        public MenuController(IRepository<Organization> repo, IRepository<TestAuth> repoA)
         {
+            repositoryA = repoA;
+
             items = new List<MenuItem>
             {
                 new MenuItem{Name="Главная", Controller="Home", Action="Index", Active=string.Empty},
-                new MenuItem{Name="Писатели Клетчины", Controller="Author", Action="List", Active=string.Empty},
+                //new MenuItem{Name="Писатели Клетчины", Controller="Author", Action="List", Active=string.Empty},
                 //new MenuItem{Name="Культура", Controller="Author", Action="Index", Active=string.Empty},
                 //new MenuItem{Name="История", Controller="Author", Action="Index", Active=string.Empty},
-                new MenuItem{Name="Контакты", Controller="Contact", Action="Index", Active=string.Empty},
+                //new MenuItem{Name="Контакты", Controller="Contact", Action="Index", Active=string.Empty},
             };
+
+            var model = repositoryA.GetAll();
+
+            foreach(var item in model)
+            {
+                var menu = new MenuItem();
+                menu.Name = item.Title;
+                menu.Controller = "TestAuths";
+                menu.Action = "List";
+                menu.Group = item.Id.ToString();
+                menu.Active = string.Empty;
+                items.Add(menu);
+            }
 
             repository = repo;
         }

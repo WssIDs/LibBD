@@ -1,4 +1,4 @@
-﻿@model LibDB.DAL.Organization 
+﻿@model IEnumerable<LibDB.DAL.TestAuth>
 @{
     ViewBag.Title = "Главная страница";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,35 +6,27 @@
 
 <h2 class="mt-5">Базы данных библиотеки</h2>
 <hr />
+
 <div class="row">
-    <div class="col-sm-12 col-md-4">
-        <div class="card">
-            <img src="~/Images/placeholder.png" class="card-img-top">
-            <div class="card-body">
-                <h3 class="card-title">Наследие</h3>
-                <p class="card-text">Карточки наследния библиотеки</p>
-                <p>@Html.ActionLink("Просмотр", "Index", "Author", null, new { @class = "btn btn-primary" })</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-12 col-md-4">
-        <div class="card">
-            <img src="~/Images/placeholder.png" class="card-img-top">
-            <div class="card-body">
-                <h3 class="card-title">Культура</h3>
-                <p class="card-text">Карточки культуры библиотеки</p>
-                <p>@Html.ActionLink("Просмотр", "Index", "Author", null, new { @class = "btn btn-primary" })</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-6 col-md-4">
-        <div class="card">
-            <img src="~/Images/placeholder.png" class="card-img-top">
-            <div class="card-body">
-                <h3 class="card-title">История</h3>
-                <p class="card-text">Карточки истории библиотеки</p>
-                <p>@Html.ActionLink("Просмотр", "Index", "Author", null, new { @class = "btn btn-primary" })</p>
-            </div>
+    <div class="col">
+        <div class="row">
+            @{
+                foreach (var item in Model)
+                {
+                    <div class="col-md-12">
+                        <div class="card shadow-lg mb-3">
+                            <p class="card-header text-uppercase">@item.Id. @item.Title</p>
+                            @*<img src="~/Images/placeholder.png" class="card-img-top">*@
+                            <div class="card-body">
+                                <p class="card-text">@item.Description</p>
+                            </div>
+                            <div class="card-footer">
+                                @Html.ActionLink("Просмотр", "List", "TestCards", new { maingroup = item.Id }, new { @class = "btn btn-sm btn-dark float-right" })
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
         </div>
     </div>
 </div>
