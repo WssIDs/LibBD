@@ -34,7 +34,7 @@ namespace LibBD.Controllers
             {
                 var menu = new MenuItem();
                 menu.Name = item.Title;
-                menu.Controller = "TestAuths";
+                menu.Controller = "TestCards";
                 menu.Action = "List";
                 menu.Group = item.Id.ToString();
                 menu.Active = string.Empty;
@@ -55,9 +55,9 @@ namespace LibBD.Controllers
             return PartialView(repository.GetAll().First());
         }
 
-        public PartialViewResult Main(string a = "Index", string c = "Home")
+        public PartialViewResult Main(string maingroup, string a = "Index", string c = "Home")
         {
-            var item = items.Where(m => m.Controller == c);
+            var item = items.Where(m => m.Controller == c && maingroup == null || m.Group == maingroup);
             if (item.Count() != 0)
             {
                 item.First().Active = "active";

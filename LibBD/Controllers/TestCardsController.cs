@@ -155,7 +155,7 @@ namespace LibBD.Controllers
                 try
                 {
                     repository.Update(card);
-                    return RedirectToAction("Index");
+                    return RedirectToAction("List");
                 }
                 catch
                 {

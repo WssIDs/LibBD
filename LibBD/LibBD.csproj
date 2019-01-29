@@ -231,6 +231,10 @@
     <Compile Include="Migrations\201901281303089_changeTestAuthToIEnurable-Cards.Designer.cs">
       <DependentUpon>201901281303089_changeTestAuthToIEnurable-Cards.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901291857251_TestCardsAddNewFields.cs" />
+    <Compile Include="Migrations\201901291857251_TestCardsAddNewFields.Designer.cs">
+      <DependentUpon>201901291857251_TestCardsAddNewFields.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -515,6 +519,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901281303089_changeTestAuthToIEnurable-Cards.resx">
       <DependentUpon>201901281303089_changeTestAuthToIEnurable-Cards.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901291857251_TestCardsAddNewFields.resx">
+      <DependentUpon>201901291857251_TestCardsAddNewFields.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

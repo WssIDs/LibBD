@@ -12,12 +12,20 @@ namespace LibDB.DAL
     {
         [HiddenInput]
         public int Id { get; set; } // id автора
-        [Required(ErrorMessage = "Введите Заглавие карточки")]
-        [Display(Name = "Заглавие карточки")]
-        public string Title { get; set; } // Заглавие карточки
+
         [Required(ErrorMessage = "Введите год заполнения карточки")]
         [Display(Name = "Год")]
         public int Year { get; set; } // Год заполнения карточки
+
+        [Display(Name = "Шапка карточки")]
+        public string Header { get; set; } // Шапка карточки
+        [Required(ErrorMessage = "Введите Заглавие карточки")]
+        [Display(Name = "Заглавие карточки")]
+        public string Title { get; set; } // Заглавие карточки
+        [Display(Name = "Тело карточки")]
+        public string Body { get; set; } // тело карточки
+        [Display(Name = "Описание")]
+        public string Description { get; set; } // описание карточки
 
         public int? AuthId { get; set; }
         public TestAuth Auth { get; set; }
