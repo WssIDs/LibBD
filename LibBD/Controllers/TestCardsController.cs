@@ -192,6 +192,14 @@ namespace LibBD.Controllers
             var databases = repositoryAuths
                 .GetAll();
 
+            var group = repository
+                        .GetAll()
+                        .OrderByDescending(d => d.Year)
+                        .Select(d => d.Year)
+                        .Distinct();
+
+            ViewBag.Years = group;
+
             return PartialView(databases);
         }
     }
