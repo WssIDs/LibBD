@@ -3,9 +3,10 @@
 <!-- получение названия текущей группы из запроса -->
 @{var txt = Request.RequestContext.RouteData.Values["maingroup"] ?? "Все";}
 @{var txt1 = Request.RequestContext.RouteData.Values["group"] ?? "Все";}
-<div class="list-group">
+@*<h5>Базы данных</h5>
+<div class="list-group mb-5">*@
     @{
-        if (txt.Equals("Все"))
+        @*if (txt.Equals("Все"))
         {
             <a href="@Url.Action("List", "TestCards")" class="list-group-item list-group-item-action active">
                 Все
@@ -16,23 +17,25 @@
             <a href="@Url.Action("List", "TestCards")" class="list-group-item list-group-item-action">
                 Все
             </a>
-        }
+        }*@
     }
 
     @{
         int i = 0;
+        string mgroup = null;
         if (int.TryParse(txt.ToString(), out i))
         {
             i = Convert.ToInt32(txt);
+            mgroup = txt.ToString();
         }
         else
         {
             i = 0;
+            mgroup = null;
         }
 
-        foreach (var item in Model)
+        @*foreach (var item in Model)
         {
-
             if (item.Id == i)
             {
                 <a class="list-group-item list-group-item-action active" href="@Url.Action("List", "TestCards", new { maingroup = item.Id })">
@@ -45,21 +48,21 @@
                     @item.Title
                 </a>
             }
-        }
+        }*@
     }
-</div>
-
+@*</div>*@
 <div class="list-group">
+
     @{
         if (txt1.Equals("Все"))
         {
-            <a href="@Url.Action("List", "TestCards")" class="list-group-item list-group-item-action active">
+            <a href="@Url.Action("List", "TestCards", new { maingroup = mgroup})" class="list-group-item list-group-item-action active">
                 Все
             </a>
         }
         else
         {
-            <a href="@Url.Action("List", "TestCards")" class="list-group-item list-group-item-action">
+            <a href="@Url.Action("List", "TestCards", new { maingroup = mgroup})" class="list-group-item list-group-item-action">
                 Все
             </a>
         }
@@ -78,16 +81,15 @@
 
         foreach (var item in ViewBag.Years)
         {
-
             if (item == n)
             {
-                <a class="list-group-item list-group-item-action active" href="@Url.Action("List", "TestCards", new { maingroup = i, group = item })">
+                <a class="list-group-item list-group-item-action active" href="@Url.Action("List", "TestCards", new { maingroup = mgroup, group = item })">
                     @item.ToString()
                 </a>
             }
             else
             {
-                <a class="list-group-item list-group-item-action" href="@Url.Action("List", "TestCards", new {  maingroup = i, group = item })">
+                <a class="list-group-item list-group-item-action" href="@Url.Action("List", "TestCards", new {  maingroup = mgroup, group = item })">
                     @item.ToString()
                 </a>
             }

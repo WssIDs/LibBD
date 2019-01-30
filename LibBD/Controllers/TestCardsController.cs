@@ -187,13 +187,15 @@ namespace LibBD.Controllers
             }
         }
 
-        public PartialViewResult Side()
+        public PartialViewResult Side(string maingroup)
         {
             var databases = repositoryAuths
                 .GetAll();
 
             var group = repository
                         .GetAll()
+                        .Where(a => maingroup == null || maingroup == "Все"
+                        || a.AuthId == Convert.ToInt32(maingroup))
                         .OrderByDescending(d => d.Year)
                         .Select(d => d.Year)
                         .Distinct();
