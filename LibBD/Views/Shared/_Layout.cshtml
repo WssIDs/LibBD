@@ -16,7 +16,7 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                @Html.Action("Main", "Menu", new { c = Request.RequestContext.RouteData.Values["controller"], })
+                @Html.Action("Main", "Menu", new { c = Request.RequestContext.RouteData.Values["controller"] })
                 @Html.Partial("_LoginPartial")
             </div>
     </nav>

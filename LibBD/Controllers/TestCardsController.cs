@@ -43,12 +43,9 @@ namespace LibBD.Controllers
                                                             .OrderByDescending(d => d.Year);
 
                     var lstnew = nlst.Where(s => s.Title.Contains(searchtext)
-                    //|| !String.IsNullOrEmpty(s.) && s.LastName.Contains(searchString)
-                    //|| !String.IsNullOrEmpty(s.FirstName) && s.FirstName.Contains(searchString)
-                    //|| !String.IsNullOrEmpty(s.MiddleName) && s.MiddleName.Contains(searchString)
-                    //|| !String.IsNullOrEmpty(s.Body) && s.Body.Contains(searchString)
-                    //|| !String.IsNullOrEmpty(s.Description) && s.Description.Contains(searchString)
-                    //|| !String.IsNullOrEmpty(s.Collaborators) && s.Collaborators.Contains(searchString)
+                    || !String.IsNullOrEmpty(s.Header) && s.Header.Contains(searchtext)
+                    || !String.IsNullOrEmpty(s.Body) && s.Body.Contains(searchtext)
+                    || !String.IsNullOrEmpty(s.Description) && s.Description.Contains(searchtext)
                     );
 
                     model = PageListViewModel<TestCard>.CreatePage(lstnew, page, pageSize);
@@ -60,7 +57,7 @@ namespace LibBD.Controllers
                                                             || a.Year == Convert.ToInt32(group))
                                                             .OrderBy(d => d.Title)
                                                             .OrderByDescending(d => d.Year);
-                    //var lst = repository.GetAll();
+
                     model = PageListViewModel<TestCard>.CreatePage(nlst, page, pageSize);
                 }
             }
@@ -74,12 +71,9 @@ namespace LibBD.Controllers
                                         .OrderByDescending(d => d.Year);
 
                     var lstnew = nlst.Where(s => s.Title.Contains(searchtext)
-                    //|| !String.IsNullOrEmpty(s.) && s.LastName.Contains(searchString)
-                    //|| !String.IsNullOrEmpty(s.FirstName) && s.FirstName.Contains(searchString)
-                    //|| !String.IsNullOrEmpty(s.MiddleName) && s.MiddleName.Contains(searchString)
-                    //|| !String.IsNullOrEmpty(s.Body) && s.Body.Contains(searchString)
-                    //|| !String.IsNullOrEmpty(s.Description) && s.Description.Contains(searchString)
-                    //|| !String.IsNullOrEmpty(s.Collaborators) && s.Collaborators.Contains(searchString)
+                    || !String.IsNullOrEmpty(s.Header) && s.Header.Contains(searchtext)
+                    || !String.IsNullOrEmpty(s.Body) && s.Body.Contains(searchtext)
+                    || !String.IsNullOrEmpty(s.Description) && s.Description.Contains(searchtext)
                     );
 
                     model = PageListViewModel<TestCard>.CreatePage(lstnew, page, pageSize);
@@ -91,7 +85,7 @@ namespace LibBD.Controllers
                                         || a.Year == Convert.ToInt32(group))
                                         .OrderBy(d => d.Title)
                                         .OrderByDescending(d => d.Year);
-                    //var lst = repository.GetAll();
+
                     model = PageListViewModel<TestCard>.CreatePage(nlst, page, pageSize);
                 }
             }
@@ -179,7 +173,7 @@ namespace LibBD.Controllers
             {
                 // TODO: Add delete logic here
 
-                return RedirectToAction("Index");
+                return RedirectToAction("List");
             }
             catch
             {

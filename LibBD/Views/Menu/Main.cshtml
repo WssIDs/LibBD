@@ -2,7 +2,7 @@
 <ul class="navbar-nav mr-auto">
     @foreach (var item in Model)
     {
-        if (item.Controller == "Admin")
+        if (item.Controller == "TestCards")
         {
             if (User.Identity.IsAuthenticated)
             {
@@ -11,10 +11,10 @@
                     <li class="nav-item @item.Active">@Html.ActionLink(item.Name, item.Action, item.Controller, null, new { @class = "nav-link" })</li>
                 }
             }
-        }
-        else if (item.Controller == "TestCards")
-        {
+            else
+            { 
             <li class="nav-item @item.Active">@Html.ActionLink(item.Name, item.Action, item.Controller, new { maingroup = item.Group }, new { @class = "nav-link" })</li>
+            }
         }
         else
         {
