@@ -1,0 +1,21 @@
+﻿@model LibDB.DAL.TestAuth
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2 class="mt-5">@Model.Title</h2>
+<hr />
+<div>
+    <p>База и все карточки связаные с ней будут удалены.</p>
+    <p>Вы действительно ходите удалить?</p>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <input type="submit" value="Delete" class="btn btn-danger" />
+            @Html.ActionLink("Назад", "Index", "Home", null, new { @class = "btn btn-dark" })
+        </div>
+    }
+</div>

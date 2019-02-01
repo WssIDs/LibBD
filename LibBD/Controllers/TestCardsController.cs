@@ -13,18 +13,12 @@ namespace LibBD.Controllers
         IRepository<TestCard> repository;
         IRepository<TestAuth> repositoryAuths;
 
-        int pageSize = 3;
+        int pageSize = 7;
 
         public TestCardsController(IRepository<TestCard> repo, IRepository<TestAuth> repoAuth)
         {
             repository = repo;
             repositoryAuths = repoAuth;
-        }
-
-        // GET: TestCards
-        public ActionResult Index()
-        {
-            return View(repository.GetAll());
         }
 
         public ActionResult List(string maingroup, string group,string searchtext, int page = 1)

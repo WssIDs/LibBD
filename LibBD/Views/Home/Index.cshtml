@@ -10,9 +10,29 @@
 <div class="row">
     <div class="col">
         <div class="row">
-            @{
-                foreach (var item in Model)
+            <div class="col-md-12">
+                @using (Html.BeginForm())
                 {
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="searchtext" name="searchbase" placeholder="Поиск..." aria-label="Recipient's username" aria-describedby="button-addon2">
+                        <div class="input-group-append">
+                            <input type="submit" class="btn btn-dark" value="Поиск" />
+                            @{
+                                if (User.Identity.IsAuthenticated)
+                                {
+                                    if (User.IsInRole("admin"))
+                                    {
+                                        @Html.ActionLink("Добавить", "Create", "TestAuths", null, new { @class = "btn btn-success" })
+                                    }
+                                }
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+            @{
+                    foreach (var item in Model)
+                    {
                     <div class="col-md-12">
                         <div class="card shadow-lg mb-3">
                             <p class="card-header text-uppercase">@item.Id. @item.Title</p>
@@ -21,7 +41,25 @@
                                 <p class="card-text">@item.Description</p>
                             </div>
                             <div class="card-footer">
-                                @Html.ActionLink("Просмотр", "List", "TestCards", new { maingroup = item.Id }, new { @class = "btn btn-sm btn-dark float-right" })
+                                @{
+                                <div class="btn-group btn-group-sm pull-right" role="group" aria-label="Basic example">
+                                    <a href="@Url.Action("List", "TestCards", new { maingroup = item.Id })" class="btn btn-dark">
+                                        Просмотр
+                                    </a>
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
+                                        if (User.IsInRole("admin"))
+                                        {
+                                            <a href="@Url.Action("Edit", "TestAuths", new { id = item.Id })" class="btn btn-primary">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                            <a href="@Url.Action("Delete", "TestAuths", new { id = item.Id })" class="btn btn-danger">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        }
+                                    }
+                                </div>
+                                }
                             </div>
                         </div>
                     </div>

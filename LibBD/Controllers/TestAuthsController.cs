@@ -16,12 +16,6 @@ namespace LibBD.Controllers
             repository = repo;
         }
 
-        // GET: TestAuths
-        public ActionResult Index()
-        {
-            return View(repository.GetAll());
-        }
-
         // GET: TestAuths/Details/5
         public ActionResult Details(int id)
         {
@@ -44,7 +38,7 @@ namespace LibBD.Controllers
                 try
                 {
                     repository.Create(auth);
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index","Home");
                 }
                 catch
                 {
@@ -57,18 +51,18 @@ namespace LibBD.Controllers
         // GET: TestAuths/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(repository.Get(id));
         }
 
         // POST: TestAuths/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, TestAuth auth)
         {
             try
             {
                 // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                repository.Update(auth);
+                return RedirectToAction("Index","Home");
             }
             catch
             {
@@ -79,7 +73,7 @@ namespace LibBD.Controllers
         // GET: TestAuths/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(repository.Get(id));
         }
 
         // POST: TestAuths/Delete/5
@@ -89,8 +83,8 @@ namespace LibBD.Controllers
             try
             {
                 // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                repository.Delete(id);
+                return RedirectToAction("Index","Home");
             }
             catch
             {

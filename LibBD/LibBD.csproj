@@ -465,10 +465,8 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\TestAuths\Index.cshtml" />
     <Content Include="Views\TestAuths\Details.cshtml" />
     <Content Include="Views\TestAuths\Create.cshtml" />
-    <Content Include="Views\TestCards\Index.cshtml" />
     <Content Include="Views\TestCards\Create.cshtml" />
     <Content Include="Views\TestCards\Edit.cshtml" />
     <Content Include="Views\TestCards\List.cshtml" />
@@ -476,6 +474,8 @@
     <Content Include="Views\TestCards\PagerPartial.cshtml" />
     <Content Include="Views\TestCards\ItemViewPartial.cshtml" />
     <Content Include="Views\TestCards\Side.cshtml" />
+    <Content Include="Views\TestAuths\Edit.cshtml" />
+    <Content Include="Views\TestAuths\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -530,6 +530,9 @@
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />

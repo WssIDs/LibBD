@@ -28,6 +28,8 @@ namespace LibDB.DAL
         public string Description { get; set; } // описание карточки
 
         public int? AuthId { get; set; }
+
+        [Display(Name = "База данных")]
         public TestAuth Auth { get; set; }
     }
 }

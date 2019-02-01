@@ -56,13 +56,13 @@
     @{
         if (txt1.Equals("Все"))
         {
-            <a href="@Url.Action("List", "TestCards", new { maingroup = mgroup})" class="list-group-item list-group-item-action active">
+            <a href="@Url.Action("List", "TestCards", new { maingroup = mgroup})" class="list-group-item list-group-item-action active py-2">
                 Все
             </a>
         }
         else
         {
-            <a href="@Url.Action("List", "TestCards", new { maingroup = mgroup})" class="list-group-item list-group-item-action">
+            <a href="@Url.Action("List", "TestCards", new { maingroup = mgroup})" class="list-group-item list-group-item-action py-2">
                 Все
             </a>
         }
@@ -83,13 +83,13 @@
         {
             if (item == n)
             {
-                <a class="list-group-item list-group-item-action active" href="@Url.Action("List", "TestCards", new { maingroup = mgroup, group = item })">
+                <a class="list-group-item list-group-item-action active py-2" href="@Url.Action("List", "TestCards", new { maingroup = mgroup, group = item })">
                     @item.ToString()
                 </a>
             }
             else
             {
-                <a class="list-group-item list-group-item-action" href="@Url.Action("List", "TestCards", new {  maingroup = mgroup, group = item })">
+                <a class="list-group-item list-group-item-action py-2" href="@Url.Action("List", "TestCards", new {  maingroup = mgroup, group = item })">
                     @item.ToString()
                 </a>
             }

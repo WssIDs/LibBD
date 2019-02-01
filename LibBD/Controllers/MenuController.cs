@@ -41,7 +41,7 @@ namespace LibBD.Controllers
                 items.Add(menu);
             }
 
-            items.Add(new MenuItem { Name = "Все карточки (для администраторов)", Controller = "TestCards", Action = "List", Active = string.Empty });
+            //items.Add(new MenuItem { Name = "Все карточки (для администраторов)", Controller = "TestCards", Action = "List", Active = string.Empty });
 
             repository = repo;
         }
