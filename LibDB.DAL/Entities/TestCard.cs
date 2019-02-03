@@ -27,9 +27,9 @@ namespace LibDB.DAL
         [Display(Name = "Описание")]
         public string Description { get; set; } // описание карточки
 
-        public int? AuthId { get; set; }
+        public int AuthId { get; set; }
 
         [Display(Name = "База данных")]
-        public TestAuth Auth { get; set; }
+        public virtual TestAuth Auth { get; set; }
     }
 }

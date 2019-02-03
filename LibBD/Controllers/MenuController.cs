@@ -30,16 +30,17 @@ namespace LibBD.Controllers
 
             var model = repositoryA.GetAll();
 
-            foreach(var item in model)
+            foreach (var it in model)
             {
                 var menu = new MenuItem();
-                menu.Name = item.Title;
+                menu.Name = it.Title;
                 menu.Controller = "TestCards";
                 menu.Action = "List";
-                menu.Group = item.Id.ToString();
+                menu.Group = it.Id.ToString();
                 menu.Active = string.Empty;
                 items.Add(menu);
             }
+
 
             //items.Add(new MenuItem { Name = "Все карточки (для администраторов)", Controller = "TestCards", Action = "List", Active = string.Empty });
 

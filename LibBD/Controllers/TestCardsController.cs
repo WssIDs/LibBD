@@ -27,9 +27,9 @@ namespace LibBD.Controllers
 
             PageListViewModel<TestCard> model;
 
-            if (!String.IsNullOrEmpty(maingroup))
+            if (!string.IsNullOrEmpty(maingroup))
             {
-                if (!String.IsNullOrEmpty(searchtext))
+                if (!string.IsNullOrEmpty(searchtext))
                 {
                     var nlst = repository.GetAll().Where(a => a.AuthId == Convert.ToInt32(maingroup) && group == null
                                                             || a.Year == Convert.ToInt32(group))
@@ -37,9 +37,9 @@ namespace LibBD.Controllers
                                                             .OrderByDescending(d => d.Year);
 
                     var lstnew = nlst.Where(s => s.Title.Contains(searchtext)
-                    || !String.IsNullOrEmpty(s.Header) && s.Header.Contains(searchtext)
-                    || !String.IsNullOrEmpty(s.Body) && s.Body.Contains(searchtext)
-                    || !String.IsNullOrEmpty(s.Description) && s.Description.Contains(searchtext)
+                    || !string.IsNullOrEmpty(s.Header) && s.Header.Contains(searchtext)
+                    || !string.IsNullOrEmpty(s.Body) && s.Body.Contains(searchtext)
+                    || !string.IsNullOrEmpty(s.Description) && s.Description.Contains(searchtext)
                     );
 
                     model = PageListViewModel<TestCard>.CreatePage(lstnew, page, pageSize);
@@ -48,7 +48,7 @@ namespace LibBD.Controllers
                 else
                 {
                     var nlst = repository.GetAll().Where(a => a.AuthId == Convert.ToInt32(maingroup) && group == null
-                                                            || a.Year == Convert.ToInt32(group))
+                                                            || a.AuthId == Convert.ToInt32(maingroup) && a.Year == Convert.ToInt32(group))
                                                             .OrderBy(d => d.Title)
                                                             .OrderByDescending(d => d.Year);
 
@@ -57,7 +57,7 @@ namespace LibBD.Controllers
             }
             else
             {
-                if (!String.IsNullOrEmpty(searchtext))
+                if (!string.IsNullOrEmpty(searchtext))
                 {
                     var nlst = repository.GetAll().Where(a => group == null
                                         || a.Year == Convert.ToInt32(group))
@@ -65,9 +65,9 @@ namespace LibBD.Controllers
                                         .OrderByDescending(d => d.Year);
 
                     var lstnew = nlst.Where(s => s.Title.Contains(searchtext)
-                    || !String.IsNullOrEmpty(s.Header) && s.Header.Contains(searchtext)
-                    || !String.IsNullOrEmpty(s.Body) && s.Body.Contains(searchtext)
-                    || !String.IsNullOrEmpty(s.Description) && s.Description.Contains(searchtext)
+                    || !string.IsNullOrEmpty(s.Header) && s.Header.Contains(searchtext)
+                    || !string.IsNullOrEmpty(s.Body) && s.Body.Contains(searchtext)
+                    || !string.IsNullOrEmpty(s.Description) && s.Description.Contains(searchtext)
                     );
 
                     model = PageListViewModel<TestCard>.CreatePage(lstnew, page, pageSize);
@@ -102,10 +102,10 @@ namespace LibBD.Controllers
         // GET: TestCards/Create
         public ActionResult Create()
         {
-            var testcard = new TestCard();
+            var card = new TestCard();
+            card.Year = DateTime.Now.Year;
             ViewBag.ListItem = repositoryAuths.GetAll();
-
-            return View(testcard);
+            return View(card);
         }
 
         // POST: TestCards/Create
@@ -156,7 +156,7 @@ namespace LibBD.Controllers
         // GET: TestCards/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(repository.Get(id));
         }
 
         // POST: TestCards/Delete/5
@@ -166,7 +166,7 @@ namespace LibBD.Controllers
             try
             {
                 // TODO: Add delete logic here
-
+                repository.Delete(id);
                 return RedirectToAction("List");
             }
             catch

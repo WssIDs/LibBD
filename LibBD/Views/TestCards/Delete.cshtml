@@ -1,0 +1,22 @@
+﻿@model LibDB.DAL.TestCard
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="mt-5">@Model.Title</h2>
+<hr />
+<div>
+    <p>Выбранная карточка будет удалена.</p>
+    <p>Вы действительно ходите удалить?</p>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-danger" />
+            @Html.ActionLink("Назад", "List", "TestCards", null, new { @class = "btn btn-dark" })
+        </div>
+    }
+</div>

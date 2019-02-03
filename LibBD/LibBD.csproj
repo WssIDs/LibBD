@@ -235,6 +235,10 @@
     <Compile Include="Migrations\201901291857251_TestCardsAddNewFields.Designer.cs">
       <DependentUpon>201901291857251_TestCardsAddNewFields.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902011701484_addvirtualpropertyTestCards.cs" />
+    <Compile Include="Migrations\201902011701484_addvirtualpropertyTestCards.Designer.cs">
+      <DependentUpon>201902011701484_addvirtualpropertyTestCards.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -476,6 +480,7 @@
     <Content Include="Views\TestCards\Side.cshtml" />
     <Content Include="Views\TestAuths\Edit.cshtml" />
     <Content Include="Views\TestAuths\Delete.cshtml" />
+    <Content Include="Views\TestCards\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -522,6 +527,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901291857251_TestCardsAddNewFields.resx">
       <DependentUpon>201901291857251_TestCardsAddNewFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902011701484_addvirtualpropertyTestCards.resx">
+      <DependentUpon>201902011701484_addvirtualpropertyTestCards.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

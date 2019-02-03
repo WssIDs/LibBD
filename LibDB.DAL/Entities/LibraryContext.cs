@@ -19,8 +19,6 @@ namespace LibDB.DAL
 
         public void Populate()
         {
-            this.Configuration.LazyLoadingEnabled = true;
-
             if (!Roles.Any())
             {
                 // Создаем менеджеры ролей и пользователей

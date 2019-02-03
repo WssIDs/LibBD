@@ -44,7 +44,7 @@ namespace LibDB.DAL
 
         public IEnumerable<TestCard> GetAll()
         {
-            return table.Include(a => a.Auth);
+            return table.Include(a=>a.Auth);
         }
 
         public Task<TestCard> GetAsync(int id)
