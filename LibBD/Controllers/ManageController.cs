@@ -6,9 +6,9 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using LibBD.Models;
+using LibDB.Models;
 
-namespace LibBD.Controllers
+namespace LibDB.Controllers
 {
     [Authorize]
     public class ManageController : Controller

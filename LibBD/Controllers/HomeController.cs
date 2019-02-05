@@ -5,14 +5,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace LibBD.Controllers
+namespace LibDB.Controllers
 {
     public class HomeController : Controller
     {
         IRepository<Organization> repository;
-        IRepository<TestAuth> repositoryAuths;
+        IRepository<TestBase> repositoryAuths;
 
-        public HomeController(IRepository<Organization> repo, IRepository<TestAuth> repoA)
+        public HomeController(IRepository<Organization> repo, IRepository<TestBase> repoA)
         {
             repository = repo;
             repositoryAuths = repoA;

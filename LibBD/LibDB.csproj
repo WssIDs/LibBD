@@ -11,10 +11,10 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{86CA8B3A-1372-4DFD-9FB4-D14603798AF5}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
-    <OutputType>Library</OutputType>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LibBD</RootNamespace>
-    <AssemblyName>LibBD</AssemblyName>
+    <RootNamespace>LibDB</RootNamespace>
+    <AssemblyName>LibDB</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -26,7 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -47,6 +47,19 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
+    <TypeScriptTarget>ES3</TypeScriptTarget>
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptModuleKind>None</TypeScriptModuleKind>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
@@ -186,7 +199,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
-    <Compile Include="Controllers\TestAuthsController.cs" />
+    <Compile Include="Controllers\TestBasesController.cs" />
     <Compile Include="Controllers\TestCardsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -238,6 +251,14 @@
     <Compile Include="Migrations\201902011701484_addvirtualpropertyTestCards.cs" />
     <Compile Include="Migrations\201902011701484_addvirtualpropertyTestCards.Designer.cs">
       <DependentUpon>201902011701484_addvirtualpropertyTestCards.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902051326108_renameTestAuthToTestBase.cs" />
+    <Compile Include="Migrations\201902051326108_renameTestAuthToTestBase.Designer.cs">
+      <DependentUpon>201902051326108_renameTestAuthToTestBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902051353202_renameAuthToBaseInTestCard.cs" />
+    <Compile Include="Migrations\201902051353202_renameAuthToBaseInTestCard.Designer.cs">
+      <DependentUpon>201902051353202_renameAuthToBaseInTestCard.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -337,6 +358,7 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\Web.pubxml" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -469,8 +491,8 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\TestAuths\Details.cshtml" />
-    <Content Include="Views\TestAuths\Create.cshtml" />
+    <Content Include="Views\TestBases\Details.cshtml" />
+    <Content Include="Views\TestBases\Create.cshtml" />
     <Content Include="Views\TestCards\Create.cshtml" />
     <Content Include="Views\TestCards\Edit.cshtml" />
     <Content Include="Views\TestCards\List.cshtml" />
@@ -478,8 +500,8 @@
     <Content Include="Views\TestCards\PagerPartial.cshtml" />
     <Content Include="Views\TestCards\ItemViewPartial.cshtml" />
     <Content Include="Views\TestCards\Side.cshtml" />
-    <Content Include="Views\TestAuths\Edit.cshtml" />
-    <Content Include="Views\TestAuths\Delete.cshtml" />
+    <Content Include="Views\TestBases\Edit.cshtml" />
+    <Content Include="Views\TestBases\Delete.cshtml" />
     <Content Include="Views\TestCards\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -531,6 +553,12 @@
     <EmbeddedResource Include="Migrations\201902011701484_addvirtualpropertyTestCards.resx">
       <DependentUpon>201902011701484_addvirtualpropertyTestCards.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902051326108_renameTestAuthToTestBase.resx">
+      <DependentUpon>201902051326108_renameTestAuthToTestBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902051353202_renameAuthToBaseInTestCard.resx">
+      <DependentUpon>201902051353202_renameAuthToBaseInTestCard.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
@@ -540,7 +568,11 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>favicon.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
@@ -553,16 +585,19 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>61556</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:61556/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
+          <UseCustomServer>True</UseCustomServer>
           <CustomServerUrl>
           </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <servers defaultServer="SelfHostServer">
+            <server name="SelfHostServer" exePath="" cmdArgs="" url="http://localhost:61556/" workingDir="" />
+          </servers>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>

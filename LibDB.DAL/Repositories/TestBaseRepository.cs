@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 
 namespace LibDB.DAL
 {
-    public class TestAuthRepository : IRepository<TestAuth>
+    public class TestBaseRepository : IRepository<TestBase>
     {
         private ApplicationDbContext context;
-        private DbSet<TestAuth> table;
+        private DbSet<TestBase> table;
 
-        public TestAuthRepository(ApplicationDbContext ctx)
+        public TestBaseRepository(ApplicationDbContext ctx)
         {
             context = ctx;
             table = context.TestAuths;
         }
 
-        public void Create(TestAuth t)
+        public void Create(TestBase t)
         {
             table.Add(t);
             context.SaveChanges();
@@ -27,38 +27,38 @@ namespace LibDB.DAL
         public void Delete(int id)
         {
             context
-            .Entry(new TestAuth { Id = id })
+            .Entry(new TestBase { Id = id })
             .State = EntityState.Deleted;
             context.SaveChanges();
         }
 
-        public IEnumerable<TestAuth> Find(Func<TestAuth, bool> predicate)
+        public IEnumerable<TestBase> Find(Func<TestBase, bool> predicate)
         {
             return table.Where(predicate).ToList();
         }
 
-        public TestAuth Get(int id)
+        public TestBase Get(int id)
         {
             return table.Find(id);
         }
 
-        public IEnumerable<TestAuth> GetAll()
+        public IEnumerable<TestBase> GetAll()
         {
             return table;
         }
 
-        public Task<TestAuth> GetAsync(int id)
+        public Task<TestBase> GetAsync(int id)
         {
             return context.TestAuths.FindAsync(id);
         }
 
-        public void Update(TestAuth t)
+        public void Update(TestBase t)
         {
             var author = context.TestAuths
                              .AsNoTracking()
                              .Where(ct => ct.Id == t.Id)
                              .FirstOrDefault();
-            context.Entry<TestAuth>(t).State = EntityState.Modified;
+            context.Entry<TestBase>(t).State = EntityState.Modified;
             context.SaveChanges();
         }
     }

@@ -3,16 +3,16 @@ namespace LibDB.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class UpdateCardAddCollaborators : DbMigration
+    public partial class renameTestAuthToTestBase : DbMigration
     {
         public override void Up()
         {
-            AddColumn("dbo.Cards", "Collaborators", c => c.String());
+            RenameTable(name: "dbo.TestAuths", newName: "TestBases");
         }
         
         public override void Down()
         {
-            DropColumn("dbo.Cards", "Collaborators");
+            RenameTable(name: "dbo.TestBases", newName: "TestAuths");
         }
     }
 }

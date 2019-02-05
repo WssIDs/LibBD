@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("создание и редактирование карточек")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("WssIDs")]
-[assembly: AssemblyProduct("LibBD")]
+[assembly: AssemblyProduct("LibDB")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

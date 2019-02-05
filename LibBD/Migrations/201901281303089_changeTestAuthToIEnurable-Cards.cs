@@ -1,4 +1,4 @@
-namespace LibBD.Migrations
+namespace LibDB.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;

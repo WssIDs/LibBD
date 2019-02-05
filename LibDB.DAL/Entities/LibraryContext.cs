@@ -14,7 +14,7 @@ namespace LibDB.DAL
         public DbSet<Card> Cards { get; set; }
         public DbSet<Organization> Organizations { get; set; }
 
-        public DbSet<TestAuth> TestAuths { get; set; }
+        public DbSet<TestBase> TestAuths { get; set; }
         public DbSet<TestCard> TestCards { get; set; }
 
         public void Populate()

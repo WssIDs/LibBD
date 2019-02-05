@@ -5,13 +5,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace LibBD.Controllers
+namespace LibDB.Controllers
 {
-    public class TestAuthsController : Controller
+    public class TestBasesController : Controller
     {
-        IRepository<TestAuth> repository;
+        IRepository<TestBase> repository;
 
-        public TestAuthsController(IRepository<TestAuth> repo)
+        public TestBasesController(IRepository<TestBase> repo)
         {
             repository = repo;
         }
@@ -25,19 +25,19 @@ namespace LibBD.Controllers
         // GET: TestAuths/Create
         public ActionResult Create()
         {
-            var auth = new TestAuth();
-            return View(auth);
+            var mbase = new TestBase();
+            return View(mbase);
         }
 
         // POST: TestAuths/Create
         [HttpPost]
-        public ActionResult Create(TestAuth auth)
+        public ActionResult Create(TestBase mbase)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    repository.Create(auth);
+                    repository.Create(mbase);
                     return RedirectToAction("Index","Home");
                 }
                 catch
@@ -45,7 +45,7 @@ namespace LibBD.Controllers
                     return View();
                 }
             }
-            else return View(auth);
+            else return View(mbase);
         }
 
         // GET: TestAuths/Edit/5
@@ -56,12 +56,12 @@ namespace LibBD.Controllers
 
         // POST: TestAuths/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, TestAuth auth)
+        public ActionResult Edit(int id, TestBase mbase)
         {
             try
             {
                 // TODO: Add update logic here
-                repository.Update(auth);
+                repository.Update(mbase);
                 return RedirectToAction("Index","Home");
             }
             catch

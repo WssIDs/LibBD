@@ -1,4 +1,4 @@
-﻿using LibBD.Models;
+﻿using LibDB.Models;
 using LibDB.DAL;
 using System;
 using System.Collections.Generic;
@@ -6,16 +6,16 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace LibBD.Controllers
+namespace LibDB.Controllers
 {
     public class MenuController : Controller
     {
         List<MenuItem> items;
 
         IRepository<Organization> repository;
-        IRepository<TestAuth> repositoryA;
+        IRepository<TestBase> repositoryA;
 
-        public MenuController(IRepository<Organization> repo, IRepository<TestAuth> repoA)
+        public MenuController(IRepository<Organization> repo, IRepository<TestBase> repoA)
         {
             repositoryA = repoA;
 

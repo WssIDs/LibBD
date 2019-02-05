@@ -101,13 +101,13 @@
     <Compile Include="Entities\IdentityModels.cs" />
     <Compile Include="Entities\LibraryContext.cs" />
     <Compile Include="Entities\Organization.cs" />
-    <Compile Include="Entities\TestAuth.cs" />
+    <Compile Include="Entities\TestBase.cs" />
     <Compile Include="Entities\TestCard.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\CardRepository.cs" />
     <Compile Include="Repositories\OrganizationRepository.cs" />
-    <Compile Include="Repositories\TestAuthRepository.cs" />
+    <Compile Include="Repositories\TestBaseRepository.cs" />
     <Compile Include="Repositories\TestCardRepository.cs" />
   </ItemGroup>
   <ItemGroup>

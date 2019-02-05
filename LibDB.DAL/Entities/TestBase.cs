@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace LibDB.DAL
 {
-    public class TestAuth
+    public class TestBase
     {
         [HiddenInput]
         public int Id { get; set; } // id бд

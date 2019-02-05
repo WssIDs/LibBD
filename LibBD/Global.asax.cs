@@ -9,7 +9,7 @@ using LibDB.DAL;
 using Ninject;
 using Ninject.Web.Common.WebHost;
 
-namespace LibBD
+namespace LibDB
 {
     public class MvcApplication : NinjectHttpApplication
     {
@@ -27,7 +27,7 @@ namespace LibBD
             IKernel kernel = new StandardKernel();
             kernel.Bind<IRepository<Card>>().To<CardRepository>();
             kernel.Bind<IRepository<Organization>>().To<OrganizationRepository>();
-            kernel.Bind<IRepository<TestAuth>>().To<TestAuthRepository>();
+            kernel.Bind<IRepository<TestBase>>().To<TestBaseRepository>();
             kernel.Bind<IRepository<TestCard>>().To<TestCardRepository>();
             return kernel;
         }

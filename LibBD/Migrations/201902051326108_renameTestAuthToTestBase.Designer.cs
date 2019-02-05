@@ -7,13 +7,13 @@ namespace LibDB.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class changeTestAuthToIEnurableCards : IMigrationMetadata
+    public sealed partial class renameTestAuthToTestBase : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(changeTestAuthToIEnurableCards));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(renameTestAuthToTestBase));
         
         string IMigrationMetadata.Id
         {
-            get { return "201901281303089_changeTestAuthToIEnurable-Cards"; }
+            get { return "201902051326108_renameTestAuthToTestBase"; }
         }
         
         string IMigrationMetadata.Source

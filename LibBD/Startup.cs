@@ -1,8 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(LibBD.Startup))]
-namespace LibBD
+[assembly: OwinStartupAttribute(typeof(LibDB.Startup))]
+namespace LibDB
 {
     public partial class Startup
     {

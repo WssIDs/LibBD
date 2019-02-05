@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace LibBD
+namespace LibDB
 {
     public class BundleConfig
     {

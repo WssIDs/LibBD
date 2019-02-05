@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
-namespace LibBD.Controllers
+namespace LibDB.Controllers
 {
     public class ContactController : Controller
     {

@@ -1,4 +1,4 @@
-﻿using LibBD.Models;
+﻿using LibDB.Models;
 using LibDB.DAL;
 using System;
 using System.Collections.Generic;
@@ -6,24 +6,24 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace LibBD.Controllers
+namespace LibDB.Controllers
 {
     public class TestCardsController : Controller
     {
-        IRepository<TestCard> repository;
-        IRepository<TestAuth> repositoryAuths;
+        IRepository<TestCard> repositoryCards;
+        IRepository<TestBase> repositoryBases;
 
         int pageSize = 7;
 
-        public TestCardsController(IRepository<TestCard> repo, IRepository<TestAuth> repoAuth)
+        public TestCardsController(IRepository<TestCard> repoCard, IRepository<TestBase> repoBase)
         {
-            repository = repo;
-            repositoryAuths = repoAuth;
+            repositoryCards = repoCard;
+            repositoryBases = repoBase;
         }
 
         public ActionResult List(string maingroup, string group,string searchtext, int page = 1)
         {
-            ViewBag.ListItem = repositoryAuths.GetAll();
+            ViewBag.ListItem = repositoryBases.GetAll();
 
             PageListViewModel<TestCard> model;
 
@@ -31,7 +31,7 @@ namespace LibBD.Controllers
             {
                 if (!string.IsNullOrEmpty(searchtext))
                 {
-                    var nlst = repository.GetAll().Where(a => a.AuthId == Convert.ToInt32(maingroup) && group == null
+                    var nlst = repositoryCards.GetAll().Where(a => a.BaseId == Convert.ToInt32(maingroup) && group == null
                                                             || a.Year == Convert.ToInt32(group))
                                                             .OrderBy(d => d.Title)
                                                             .OrderByDescending(d => d.Year);
@@ -47,8 +47,8 @@ namespace LibBD.Controllers
                 }
                 else
                 {
-                    var nlst = repository.GetAll().Where(a => a.AuthId == Convert.ToInt32(maingroup) && group == null
-                                                            || a.AuthId == Convert.ToInt32(maingroup) && a.Year == Convert.ToInt32(group))
+                    var nlst = repositoryCards.GetAll().Where(a => a.BaseId == Convert.ToInt32(maingroup) && group == null
+                                                            || a.BaseId == Convert.ToInt32(maingroup) && a.Year == Convert.ToInt32(group))
                                                             .OrderBy(d => d.Title)
                                                             .OrderByDescending(d => d.Year);
 
@@ -59,7 +59,7 @@ namespace LibBD.Controllers
             {
                 if (!string.IsNullOrEmpty(searchtext))
                 {
-                    var nlst = repository.GetAll().Where(a => group == null
+                    var nlst = repositoryCards.GetAll().Where(a => group == null
                                         || a.Year == Convert.ToInt32(group))
                                         .OrderBy(d => d.Title)
                                         .OrderByDescending(d => d.Year);
@@ -75,7 +75,7 @@ namespace LibBD.Controllers
                 }
                 else
                 {
-                    var nlst = repository.GetAll().Where(a => group == null
+                    var nlst = repositoryCards.GetAll().Where(a => group == null
                                         || a.Year == Convert.ToInt32(group))
                                         .OrderBy(d => d.Title)
                                         .OrderByDescending(d => d.Year);
@@ -104,7 +104,7 @@ namespace LibBD.Controllers
         {
             var card = new TestCard();
             card.Year = DateTime.Now.Year;
-            ViewBag.ListItem = repositoryAuths.GetAll();
+            ViewBag.ListItem = repositoryBases.GetAll();
             return View(card);
         }
 
@@ -116,7 +116,7 @@ namespace LibBD.Controllers
             {
                 try
                 {
-                    repository.Create(card);
+                    repositoryCards.Create(card);
                     return RedirectToAction("List");
                 }
                 catch
@@ -130,8 +130,8 @@ namespace LibBD.Controllers
         // GET: TestCards/Edit/5
         public ActionResult Edit(int id)
         {
-            ViewBag.ListItem = repositoryAuths.GetAll();
-            return View(repository.Get(id));
+            ViewBag.ListItem = repositoryBases.GetAll();
+            return View(repositoryCards.Get(id));
         }
 
         // POST: TestCards/Edit/5
@@ -142,7 +142,7 @@ namespace LibBD.Controllers
             {
                 try
                 {
-                    repository.Update(card);
+                    repositoryCards.Update(card);
                     return RedirectToAction("List");
                 }
                 catch
@@ -156,7 +156,7 @@ namespace LibBD.Controllers
         // GET: TestCards/Delete/5
         public ActionResult Delete(int id)
         {
-            return View(repository.Get(id));
+            return View(repositoryCards.Get(id));
         }
 
         // POST: TestCards/Delete/5
@@ -166,7 +166,7 @@ namespace LibBD.Controllers
             try
             {
                 // TODO: Add delete logic here
-                repository.Delete(id);
+                repositoryCards.Delete(id);
                 return RedirectToAction("List");
             }
             catch
@@ -177,13 +177,13 @@ namespace LibBD.Controllers
 
         public PartialViewResult Side(string maingroup)
         {
-            var databases = repositoryAuths
+            var databases = repositoryBases
                 .GetAll();
 
-            var group = repository
+            var group = repositoryCards
                         .GetAll()
                         .Where(a => maingroup == null || maingroup == "Все"
-                        || a.AuthId == Convert.ToInt32(maingroup))
+                        || a.BaseId == Convert.ToInt32(maingroup))
                         .OrderByDescending(d => d.Year)
                         .Select(d => d.Year)
                         .Distinct();

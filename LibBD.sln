@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibBD", "LibBD\LibBD.csproj", "{86CA8B3A-1372-4DFD-9FB4-D14603798AF5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibDB", "LibBD\LibDB.csproj", "{86CA8B3A-1372-4DFD-9FB4-D14603798AF5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibDB.DAL", "LibDB.DAL\LibDB.DAL.csproj", "{77405629-8BE9-4D36-BA65-21AB78AE5A39}"
 EndProject
