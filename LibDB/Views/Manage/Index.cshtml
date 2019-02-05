@@ -1,0 +1,27 @@
+﻿@model LibDB.Models.IndexViewModel
+@{
+    ViewBag.Title = "Управление";
+}
+
+<h2 class="mt-5">@ViewBag.Title</h2>
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+<div>
+    <h4>Изменение настроек профиля</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-md-2">Пароль:</dt>
+        <dd class="col-md-10">
+            [
+            @if (Model.HasPassword)
+            {
+                @Html.ActionLink("Изменить пароль", "ChangePassword")
+            }
+            else
+            {
+                @Html.ActionLink("Создать", "SetPassword")
+            }
+            ]
+        </dd>
+    </dl>
+</div>

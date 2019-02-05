@@ -1,0 +1,75 @@
+﻿@model IEnumerable<LibDB.DAL.TestCard>
+@{var txt = Request.RequestContext.RouteData.Values["maingroup"] ?? "Все";}
+@{
+    ViewBag.Title = "Список всех карточек";
+}
+
+@{
+    if (txt.ToString() == "Все")
+    {
+        ViewBag.Title = "Список всех карточек";
+        <h2 class="mt-5">Список всех карточек</h2>
+    }
+    else
+    {
+        if (ViewBag.ListItem != null)
+        {
+            foreach (var item in ViewBag.ListItem)
+            {
+                if ((int)item.Id == Convert.ToInt32(txt))
+                {
+                    <h2 class="mt-5">@item.Title</h2>
+                    ViewBag.Title = item.Title;
+                }
+            }
+        }
+
+    }
+}
+    <hr />
+    @*<p>
+            @if (ViewBag.ListItem != null)
+            {
+                foreach (var item in ViewBag.ListItem)
+                {
+                    @Html.ActionLink((string)item.Title, "List", new { maingroup = item.Id }, new { @class = "btn btn-dark" })
+                }
+            }
+            @Html.ActionLink("Create New", "Create")
+        </p>*@
+    <div class="row">
+        <div class="col-md-3">
+            @Html.Action("Side", "TestCards", new { maingroup = txt })
+        </div>
+        <div class="col-md-9">
+
+            @using (Html.BeginForm())
+            {
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="searchtext" name="searchtext" placeholder="Поиск..." aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <div class="input-group-append">
+                        <input type="submit" class="btn btn-dark" value="Поиск" />
+                        @{
+                            if (User.Identity.IsAuthenticated)
+                            {
+                                if (User.IsInRole("admin"))
+                                {
+                                    @Html.ActionLink("Добавить", "Create", new { mbase = txt }, new { @class = "btn btn-success" })
+                         
+                                }
+                            }
+                        }
+                    </div>
+                </div>
+            }
+            @{
+                if (Model.Count() > 0)
+                {
+                    <div id="List">
+                        @Html.Partial("ListPartial", Model)
+                    </div>
+                }
+            }
+        </div>
+    </div>
+

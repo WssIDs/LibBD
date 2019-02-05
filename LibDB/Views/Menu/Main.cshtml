@@ -1,0 +1,28 @@
+﻿@model IEnumerable<LibDB.Models.MenuItem>
+<ul class="navbar-nav mr-auto">
+    @foreach (var item in Model)
+    {
+        if (item.Controller == "TestCards")
+        {
+            @*if (User.Identity.IsAuthenticated)
+            {
+                if (User.IsInRole("admin"))
+                {
+                    <li class="nav-item @item.Active">@Html.ActionLink(item.Name, item.Action, item.Controller, null, new { @class = "nav-link" })</li>
+                }
+                else
+                {
+                    <li class="nav-item @item.Active">@Html.ActionLink(item.Name, item.Action, item.Controller, new { maingroup = item.Group }, new { @class = "nav-link" })</li>
+                }
+            }
+            else
+            {*@
+                <li class="nav-item @item.Active">@Html.ActionLink(item.Name, item.Action, item.Controller, new { maingroup = item.Group }, new { @class = "nav-link" })</li>
+            //}
+        }
+        else
+        {
+            <li class="nav-item @item.Active">@Html.ActionLink(item.Name, item.Action, item.Controller, null, new { @class = "nav-link" })</li>
+        }
+    }
+</ul>
